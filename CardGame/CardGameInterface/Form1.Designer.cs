@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApp1
+﻿namespace CardGameInterface
 {
     partial class Form1
     {
