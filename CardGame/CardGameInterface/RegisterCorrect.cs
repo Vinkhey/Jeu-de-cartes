@@ -16,5 +16,11 @@ namespace CardGameInterface
         {
             InitializeComponent();
         }
+
+        private void CardsGame_Load(object sender, EventArgs e)
+        {
+            this.MaximumSize = new Size(980, 720);
+            this.MinimumSize = new Size(980, 720);
+        }
     }
 }

@@ -84,6 +84,7 @@
             this.Controls.Add(this.LblRegister);
             this.Name = "CardsGame";
             this.Text = "CardsGame";
+            this.Load += new System.EventHandler(this.CardsGame_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
