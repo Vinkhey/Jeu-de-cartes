@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CardGameManagement;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,6 +22,24 @@ namespace CardGameInterface
         {
             this.MaximumSize = new Size(1280, 800);
             this.MinimumSize = new Size(1280, 800);
+
+            try
+            {
+                //init of the connection
+                DbConnector connDB = new DbConnector();
+                connDB.OpenConnection();
+                connDB.CreateDatabase();
+            }
+            catch (Exception exc)
+            {
+                //we display the error message.
+                Console.WriteLine(exc.Message);
+            }
+        }
+
+        private void BtnSignUp_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
