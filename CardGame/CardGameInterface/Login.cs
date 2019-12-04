@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CardGameManagement;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,6 +22,20 @@ namespace CardGameInterface
         {
             this.MaximumSize = new Size(1280, 800);
             this.MinimumSize = new Size(1280, 800);
+        }
+
+        private void BtnLogin_Click(object sender, EventArgs e)
+        {
+            DbConnector ConnexionDb = new DbConnector();
+
+            if (TxtBoxPswLogin.Text != TxtBoxPswVerifLogin.Text)
+            {
+                throw new Exception("The passwords aren't the same !");
+            }
+            else
+            {
+                ConnexionDb.UserLogin(TxtBoxEmailLogin.Text);
+            }
         }
     }
 }

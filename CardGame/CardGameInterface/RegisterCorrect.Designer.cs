@@ -1,6 +1,6 @@
 ﻿namespace CardGameInterface
 {
-    partial class CardsGame
+    partial class RegisterCorrect
     {
         /// <summary>
         /// Required designer variable.
@@ -72,8 +72,9 @@
             this.BtnRegister.TabIndex = 3;
             this.BtnRegister.Text = "Connectez-vous";
             this.BtnRegister.UseVisualStyleBackColor = true;
+            this.BtnRegister.Click += new System.EventHandler(this.BtnRegister_Click);
             // 
-            // CardsGame
+            // RegisterCorrect
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -82,9 +83,8 @@
             this.Controls.Add(this.LblInscrit);
             this.Controls.Add(this.LblEmailRegister);
             this.Controls.Add(this.LblRegister);
-            this.Name = "CardsGame";
-            this.Text = "CardsGame";
-            this.Load += new System.EventHandler(this.CardsGame_Load);
+            this.Name = "RegisterCorrect";
+            this.Text = "RegisterCorrect";
             this.ResumeLayout(false);
             this.PerformLayout();
 

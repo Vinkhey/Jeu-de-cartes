@@ -41,13 +41,26 @@ namespace CardGameManagement
             cmd.ExecuteNonQuery();
         }
 
-        public void AddUser()
+        public void AddUser(string UserMail, string UserPassword)
         {
             // Create a SQL command
             MySqlCommand cmd = connection.CreateCommand();
+            connection.Open();
 
             // SQL request
-            cmd.CommandText = "CREATE DATABASE IF NOT EXISTS CardGame; USE CardGame; CREATE TABLE CardGame.Users(idUsers INT, Email VARCHAR(20), PasswordHash VARCHAR(20)); ALTER TABLE Users ADD CONSTRAINT AUTO_INCREMENT PRIMARY KEY(idUsers); ";
+            cmd.CommandText = $"USE CardGame; INSERT INTO users(Email, PasswordHash) VALUES('{UserMail}', '{UserPassword}') ";
+
+            // Execute the SQL command
+            cmd.ExecuteNonQuery();
+        }
+
+        public void UserLogin(string Mail)
+        {
+            MySqlCommand cmd = connection.CreateCommand();
+            connection.Open();
+
+            // SQL request
+            cmd.CommandText = $"USE CardGame; SELECT Email, PasswordHash FROM users WHERE Email LIKE {Mail}";
 
             // Execute the SQL command
             cmd.ExecuteNonQuery();

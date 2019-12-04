@@ -39,7 +39,18 @@ namespace CardGameInterface
 
         private void BtnSignUp_Click(object sender, EventArgs e)
         {
-            
+            DbConnector ConnexionDb = new DbConnector();
+            RegisterCorrect form = new RegisterCorrect();
+
+            if (TxtBoxPswSignUp.Text != TxtBoxPswVerifSignUp.Text)
+            {
+                throw new Exception("The passwords aren't the same !");
+            }
+            else
+            {
+                ConnexionDb.AddUser(TxtBoxEmailSignUp.Text, TxtBoxPswSignUp.Text);
+                form.ShowDialog();
+            }    
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CardGameManagement;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,17 +11,24 @@ using System.Windows.Forms;
 
 namespace CardGameInterface
 {
-    public partial class CardsGame : Form
+    public partial class RegisterCorrect : Form
     {
-        public CardsGame()
+        public RegisterCorrect()
         {
             InitializeComponent();
         }
 
-        private void CardsGame_Load(object sender, EventArgs e)
+        private void RegisterCorrect_Load(object sender, EventArgs e)
         {
             this.MaximumSize = new Size(980, 720);
             this.MinimumSize = new Size(980, 720);
+        }
+
+        private void BtnRegister_Click(object sender, EventArgs e)
+        {
+            Login login = new Login();
+
+            login.ShowDialog();
         }
     }
 }
