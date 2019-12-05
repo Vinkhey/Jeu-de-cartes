@@ -42,7 +42,36 @@ namespace CardGameInterface
             DbConnector ConnexionDb = new DbConnector();
             RegisterCorrect form = new RegisterCorrect();
 
-            if (TxtBoxPswSignUp.Text != TxtBoxPswVerifSignUp.Text)
+            if(TxtBoxEmailSignUp.Text == "" || TxtBoxPswSignUp.Text == "" || TxtBoxPswVerifSignUp.Text == "")
+            {
+                if(TxtBoxEmailSignUp.Text == "")
+                {
+                    LblMailErrorSignUp.Text = "Ce champs est obligatoire";
+                }
+                else
+                {
+                    LblMailErrorSignUp.Text = "";
+                }
+
+                if (TxtBoxPswSignUp.Text == "")
+                {
+                    LblPswErrorSignUp.Text = "Ce champs est obligatoire";
+                }
+                else
+                {
+                    LblPswErrorSignUp.Text = "";
+                }
+
+                if (TxtBoxPswVerifSignUp.Text == "")
+                {
+                    LblPswverifErrorSignUp.Text = "Ce champs est obligatoire";
+                }
+                else
+                {
+                    LblPswverifErrorSignUp.Text = "";
+                }
+            }
+            else if (TxtBoxPswSignUp.Text != TxtBoxPswVerifSignUp.Text)
             {
                 throw new Exception("The passwords aren't the same !");
             }
@@ -51,7 +80,15 @@ namespace CardGameInterface
                 ConnexionDb.AddUser(TxtBoxEmailSignUp.Text, TxtBoxPswSignUp.Text);
                 this.Hide();
                 form.ShowDialog();
-            }    
+            }
+               
+        }
+
+        private void BtnSignUpToLogin_Click(object sender, EventArgs e)
+        {
+            Login LoginForm = new Login();
+            this.Hide();
+            LoginForm.ShowDialog();
         }
     }
 }

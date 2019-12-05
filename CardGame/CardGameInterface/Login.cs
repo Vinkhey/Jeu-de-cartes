@@ -32,14 +32,21 @@ namespace CardGameInterface
             {
                 //TODO
             }
-            else if(TxtBoxPswLogin.Text == "")
+
+            if(TxtBoxPswLogin.Text == "")
             {
                 //TODO
             }
-            else
-            {
-                ConnexionDb.UserLogin(TxtBoxEmailLogin.Text, TxtBoxPswLogin.Text);
-            }
+           
+            ConnexionDb.UserLogin(TxtBoxEmailLogin.Text, TxtBoxPswLogin.Text); 
+        }
+
+        private void BtnLoginToSignUp_Click(object sender, EventArgs e)
+        {
+            SignUp SignUpForm = new SignUp();
+
+            this.Hide();
+            SignUpForm.ShowDialog();
         }
     }
 }

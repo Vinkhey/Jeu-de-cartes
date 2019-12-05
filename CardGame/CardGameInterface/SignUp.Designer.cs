@@ -154,6 +154,7 @@
             this.BtnSignUpToLogin.TabIndex = 11;
             this.BtnSignUpToLogin.Text = "Se connectez";
             this.BtnSignUpToLogin.UseVisualStyleBackColor = true;
+            this.BtnSignUpToLogin.Click += new System.EventHandler(this.BtnSignUpToLogin_Click);
             // 
             // SignUp
             // 

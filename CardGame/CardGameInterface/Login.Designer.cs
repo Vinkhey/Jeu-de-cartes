@@ -129,6 +129,7 @@
             this.BtnLoginToSignUp.TabIndex = 12;
             this.BtnLoginToSignUp.Text = "S\'inscrire";
             this.BtnLoginToSignUp.UseVisualStyleBackColor = true;
+            this.BtnLoginToSignUp.Click += new System.EventHandler(this.BtnLoginToSignUp_Click);
             // 
             // Login
             // 
