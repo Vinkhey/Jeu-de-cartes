@@ -28,13 +28,17 @@ namespace CardGameInterface
         {
             DbConnector ConnexionDb = new DbConnector();
 
-            if (TxtBoxPswLogin.Text != TxtBoxPswVerifLogin.Text)
+            if(TxtBoxEmailLogin.Text == "")
             {
-                throw new Exception("The passwords aren't the same !");
+
+            }
+            else if(TxtBoxPswLogin.Text == "")
+            {
+
             }
             else
             {
-                ConnexionDb.UserLogin(TxtBoxEmailLogin.Text);
+                ConnexionDb.UserLogin(TxtBoxEmailLogin.Text, TxtBoxPswLogin.Text);
             }
         }
     }

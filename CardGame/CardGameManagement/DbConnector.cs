@@ -54,13 +54,13 @@ namespace CardGameManagement
             cmd.ExecuteNonQuery();
         }
 
-        public void UserLogin(string Mail)
+        public void UserLogin(string Mail, string Password)
         {
             MySqlCommand cmd = connection.CreateCommand();
             connection.Open();
 
             // SQL request
-            cmd.CommandText = $"USE CardGame; SELECT Email, PasswordHash FROM users WHERE Email LIKE {Mail}";
+            cmd.CommandText = $"USE CardGame; SELECT Email, PasswordHash FROM users WHERE Email LIKE {Mail} AND PasswordHash LIKE {Password}";
 
             // Execute the SQL command
             cmd.ExecuteNonQuery();
