@@ -60,7 +60,7 @@ namespace CardGameManagement
             connection.Open();
 
             // SQL request
-            cmd.CommandText = $"USE CardGame; SELECT Email, PasswordHash FROM users WHERE Email LIKE {Mail} AND PasswordHash LIKE {Password}";
+            cmd.CommandText = $"USE CardGame; SELECT Email, PasswordHash FROM users WHERE Email LIKE '{Mail}' AND PasswordHash LIKE '{Password}'";
 
             // Execute the SQL command
             cmd.ExecuteNonQuery();

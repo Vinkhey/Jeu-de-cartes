@@ -30,11 +30,11 @@ namespace CardGameInterface
 
             if(TxtBoxEmailLogin.Text == "")
             {
-
+                //TODO
             }
             else if(TxtBoxPswLogin.Text == "")
             {
-
+                //TODO
             }
             else
             {

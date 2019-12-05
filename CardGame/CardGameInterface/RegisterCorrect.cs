@@ -28,6 +28,7 @@ namespace CardGameInterface
         {
             Login login = new Login();
 
+            this.Hide();
             login.ShowDialog();
         }
     }

@@ -49,6 +49,7 @@ namespace CardGameInterface
             else
             {
                 ConnexionDb.AddUser(TxtBoxEmailSignUp.Text, TxtBoxPswSignUp.Text);
+                this.Hide();
                 form.ShowDialog();
             }    
         }
