@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -41,14 +42,36 @@ namespace CardGameManagement
             cmd.ExecuteNonQuery();
         }
 
-        public void AddUser(string UserMail, string UserPassword)
+        public void AddUser(string SignUpEmail, string SignUpPassword)
         {
             // Create a SQL command
             MySqlCommand cmd = connection.CreateCommand();
+            string QueryResultEmail;
+            string QueryResultPassword;
             connection.Open();
 
+            cmd.CommandText = $"USE CardGame; SELECT Email, PasswordHash FROM users WHERE Email LIKE '{SignUpEmail}' AND PasswordHash LIKE '{SignUpPassword} ";
+
+            DbDataReader reader = cmd.ExecuteReader();
+
+            if (reader.HasRows)
+            {
+                //we go through the result of the select, we might get only one response. 
+                //Despite this, we use a while
+                while (reader.Read())
+                {
+                    QueryResult = reader.GetString(0);
+                }
+
+                reader.Close();
+            }
+
+            // Execute the SQL command
+            cmd.ExecuteNonQuery();
+
             // SQL request
-            cmd.CommandText = $"USE CardGame; INSERT INTO users(Email, PasswordHash) VALUES('{UserMail}', '{UserPassword}') ";
+            cmd.CommandText = $"USE CardGame; INSERT INTO users(Email, PasswordHash) VALUES('{SignUpEmail}', '{SignUpPassword}') ";
+            
 
             // Execute the SQL command
             cmd.ExecuteNonQuery();
