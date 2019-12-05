@@ -83,6 +83,7 @@
             this.Controls.Add(this.LblInscrit);
             this.Controls.Add(this.LblEmailRegister);
             this.Controls.Add(this.LblRegister);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "RegisterCorrect";
             this.Text = "RegisterCorrect";
             this.ResumeLayout(false);
