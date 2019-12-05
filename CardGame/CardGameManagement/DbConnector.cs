@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -37,7 +38,7 @@ namespace CardGameManagement
             MySqlCommand cmd = connection.CreateCommand();
 
             // SQL request
-            cmd.CommandText = "CREATE DATABASE IF NOT EXISTS CardGame; USE CardGame; CREATE TABLE CardGame.Users(idUsers INT, Email VARCHAR(50), PasswordHash VARCHAR(20)); ALTER TABLE Users ADD CONSTRAINT AUTO_INCREMENT PRIMARY KEY(idUsers); ALTER TABLE `users` CHANGE COLUMN `idUsers` `idUsers` INT(11) NOT NULL AUTO_INCREMENT FIRST; ";
+            cmd.CommandText = "CREATE DATABASE IF NOT EXISTS CardGame; USE CardGame; CREATE TABLE CardGame.Users(idUsers INT, Email VARCHAR(100), PasswordHash VARCHAR(100)); ALTER TABLE Users ADD CONSTRAINT AUTO_INCREMENT PRIMARY KEY(idUsers); ALTER TABLE `users` CHANGE COLUMN `idUsers` `idUsers` INT(11) NOT NULL AUTO_INCREMENT FIRST; ";
 
             // Execute the SQL command
             cmd.ExecuteNonQuery();
@@ -72,8 +73,12 @@ namespace CardGameManagement
 
             if (QueryResultEmail != SignUpEmail)
             {
+                byte[] data = System.Text.Encoding.ASCII.GetBytes(SignUpPassword);
+                data = new System.Security.Cryptography.SHA256Managed().ComputeHash(data);
+                String hashPassword = System.Text.Encoding.ASCII.GetString(data);
+
                 // SQL request
-                cmd.CommandText = $"USE CardGame; INSERT INTO users(Email, PasswordHash) VALUES('{SignUpEmail}', '{SignUpPassword}') ";
+                cmd.CommandText = $"USE CardGame; INSERT INTO users(Email, PasswordHash) VALUES('{SignUpEmail}', '{hashPassword}') ";
 
                 // Execute the SQL command
                 cmd.ExecuteNonQuery();
@@ -86,16 +91,31 @@ namespace CardGameManagement
             return "";
         }
 
-        public void UserLogin(string Mail, string Password)
+        public string UserLogin(string UserLoginEmail, string UserLoginPassword)
         {
             MySqlCommand cmd = connection.CreateCommand();
             connection.Open();
 
-            // SQL request
-            cmd.CommandText = $"USE CardGame; SELECT Email, PasswordHash FROM users WHERE Email LIKE '{Mail}' AND PasswordHash LIKE '{Password}'";
+            byte[] data = System.Text.Encoding.ASCII.GetBytes(UserLoginPassword);
+            data = new System.Security.Cryptography.SHA256Managed().ComputeHash(data);
+            String hashPassword = System.Text.Encoding.ASCII.GetString(data);
 
-            // Execute the SQL command
-            cmd.ExecuteNonQuery();
+            // SQL request
+            cmd.CommandText = $"USE CardGame; SELECT Email, PasswordHash FROM users WHERE Email LIKE '{UserLoginEmail}' AND PasswordHash LIKE '{hashPassword}'";
+
+            DbDataReader reader = cmd.ExecuteReader();
+
+            if (reader.HasRows == false)
+            {
+                 return "Email or password is not valid !";
+            }
+            else
+            {
+                reader.Close();
+                cmd.ExecuteNonQuery();
+            }
+
+            return "";
         }
     }
 }

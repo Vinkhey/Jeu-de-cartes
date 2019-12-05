@@ -1,6 +1,6 @@
 ﻿namespace CardGameInterface
 {
-    partial class CardGameInterface
+    partial class CardGameMainInterface
     {
         /// <summary>
         /// Required designer variable.
@@ -41,18 +41,21 @@
             this.BtnClose.TabIndex = 0;
             this.BtnClose.Text = "Quitter";
             this.BtnClose.UseVisualStyleBackColor = true;
+            this.BtnClose.Click += new System.EventHandler(this.BtnClose_Click);
             // 
             // LblUserConnected
             // 
             this.LblUserConnected.AutoSize = true;
             this.LblUserConnected.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblUserConnected.Location = new System.Drawing.Point(926, 21);
+            this.LblUserConnected.Location = new System.Drawing.Point(694, 9);
             this.LblUserConnected.Name = "LblUserConnected";
+            this.LblUserConnected.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.LblUserConnected.Size = new System.Drawing.Size(30, 25);
             this.LblUserConnected.TabIndex = 1;
             this.LblUserConnected.Text = "...";
+            this.LblUserConnected.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // CardGameInterface
+            // CardGameMainInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -60,7 +63,7 @@
             this.Controls.Add(this.LblUserConnected);
             this.Controls.Add(this.BtnClose);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "CardGameInterface";
+            this.Name = "CardGameMainInterface";
             this.Text = "CardGameInterface";
             this.ResumeLayout(false);
             this.PerformLayout();

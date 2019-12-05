@@ -27,18 +27,21 @@ namespace CardGameInterface
         private void BtnLogin_Click(object sender, EventArgs e)
         {
             DbConnector ConnexionDb = new DbConnector();
-
-            if(TxtBoxEmailLogin.Text == "")
-            {
-                //TODO
-            }
-
-            if(TxtBoxPswLogin.Text == "")
-            {
-                //TODO
-            }
+            string LoginError;
            
-            ConnexionDb.UserLogin(TxtBoxEmailLogin.Text, TxtBoxPswLogin.Text); 
+            LoginError = ConnexionDb.UserLogin(TxtBoxEmailLogin.Text, TxtBoxPswLogin.Text);
+
+            if(LoginError != "")
+            {
+                MessageBox.Show(LoginError);
+            }
+            else
+            {
+                CardGameMainInterface CardGameMainInterface = new CardGameMainInterface(TxtBoxEmailLogin.Text);
+                this.Hide();
+                CardGameMainInterface.ShowDialog();
+            }
+            
         }
 
         private void BtnLoginToSignUp_Click(object sender, EventArgs e)

@@ -10,11 +10,17 @@ using System.Windows.Forms;
 
 namespace CardGameInterface
 {
-    public partial class CardGameInterface : Form
+    public partial class CardGameMainInterface : Form
     {
-        public CardGameInterface()
+        public CardGameMainInterface(string UserConnected)
         {
             InitializeComponent();
+            LblUserConnected.Text = UserConnected;
+        }
+
+        private void BtnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
