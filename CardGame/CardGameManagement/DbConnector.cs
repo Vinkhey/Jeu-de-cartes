@@ -5,6 +5,7 @@ using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace CardGameManagement
 {
@@ -36,21 +37,22 @@ namespace CardGameManagement
             MySqlCommand cmd = connection.CreateCommand();
 
             // SQL request
-            cmd.CommandText = "CREATE DATABASE IF NOT EXISTS CardGame; USE CardGame; CREATE TABLE CardGame.Users(idUsers INT, Email VARCHAR(20), PasswordHash VARCHAR(20)); ALTER TABLE Users ADD CONSTRAINT AUTO_INCREMENT PRIMARY KEY(idUsers); ALTER TABLE `users` CHANGE COLUMN `idUsers` `idUsers` INT(11) NOT NULL AUTO_INCREMENT FIRST; ";
+            cmd.CommandText = "CREATE DATABASE IF NOT EXISTS CardGame; USE CardGame; CREATE TABLE CardGame.Users(idUsers INT, Email VARCHAR(50), PasswordHash VARCHAR(20)); ALTER TABLE Users ADD CONSTRAINT AUTO_INCREMENT PRIMARY KEY(idUsers); ALTER TABLE `users` CHANGE COLUMN `idUsers` `idUsers` INT(11) NOT NULL AUTO_INCREMENT FIRST; ";
 
             // Execute the SQL command
             cmd.ExecuteNonQuery();
         }
 
-        public void AddUser(string SignUpEmail, string SignUpPassword)
+        public string AddUser(string SignUpEmail, string SignUpPassword)
         {
             // Create a SQL command
             MySqlCommand cmd = connection.CreateCommand();
-            string QueryResultEmail;
-            string QueryResultPassword;
+            string QueryResultEmail = "";
             connection.Open();
 
-            cmd.CommandText = $"USE CardGame; SELECT Email, PasswordHash FROM users WHERE Email LIKE '{SignUpEmail}' AND PasswordHash LIKE '{SignUpPassword} ";
+            cmd.CommandText = $"USE CardGame; SELECT Email, PasswordHash FROM users WHERE Email LIKE '{SignUpEmail}'";
+
+            cmd.ExecuteNonQuery();
 
             DbDataReader reader = cmd.ExecuteReader();
 
@@ -60,21 +62,28 @@ namespace CardGameManagement
                 //Despite this, we use a while
                 while (reader.Read())
                 {
-                    QueryResult = reader.GetString(0);
+                    QueryResultEmail = reader.GetString(0);
                 }
 
                 reader.Close();
             }
 
-            // Execute the SQL command
-            cmd.ExecuteNonQuery();
+            reader.Close();
 
-            // SQL request
-            cmd.CommandText = $"USE CardGame; INSERT INTO users(Email, PasswordHash) VALUES('{SignUpEmail}', '{SignUpPassword}') ";
-            
+            if (QueryResultEmail != SignUpEmail)
+            {
+                // SQL request
+                cmd.CommandText = $"USE CardGame; INSERT INTO users(Email, PasswordHash) VALUES('{SignUpEmail}', '{SignUpPassword}') ";
 
-            // Execute the SQL command
-            cmd.ExecuteNonQuery();
+                // Execute the SQL command
+                cmd.ExecuteNonQuery();
+            }
+            else
+            {
+                return "User with this email assigned already exists";
+            }
+
+            return "";
         }
 
         public void UserLogin(string Mail, string Password)

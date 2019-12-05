@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.ComponentModel.DataAnnotations;
 
 namespace CardGameInterface
 {
@@ -42,7 +43,16 @@ namespace CardGameInterface
             DbConnector ConnexionDb = new DbConnector();
             RegisterCorrect form = new RegisterCorrect();
 
-            if(TxtBoxEmailSignUp.Text == "" || TxtBoxPswSignUp.Text == "" || TxtBoxPswVerifSignUp.Text == "")
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(TxtBoxEmailSignUp.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Email isn't a valid format");
+            }
+
+            if (TxtBoxEmailSignUp.Text == "" || TxtBoxPswSignUp.Text == "" || TxtBoxPswVerifSignUp.Text == "")
             {
                 if(TxtBoxEmailSignUp.Text == "")
                 {
@@ -73,15 +83,27 @@ namespace CardGameInterface
             }
             else if (TxtBoxPswSignUp.Text != TxtBoxPswVerifSignUp.Text)
             {
-                throw new Exception("The passwords aren't the same !");
+                MessageBox.Show("The passwords aren't the same !");
+            }
+            else if(TxtBoxPswSignUp.Text.Length < 5)
+            {
+                MessageBox.Show("Password is too small");
             }
             else
             {
-                ConnexionDb.AddUser(TxtBoxEmailSignUp.Text, TxtBoxPswSignUp.Text);
-                this.Hide();
-                form.ShowDialog();
-            }
-               
+                string UserAlreadyExists = "";
+                UserAlreadyExists = ConnexionDb.AddUser(TxtBoxEmailSignUp.Text, TxtBoxPswSignUp.Text);
+
+                if(UserAlreadyExists != "")
+                {
+                    MessageBox.Show(UserAlreadyExists);
+                }
+                else
+                {
+                    this.Hide();
+                    form.ShowDialog();
+                }
+            }    
         }
 
         private void BtnSignUpToLogin_Click(object sender, EventArgs e)

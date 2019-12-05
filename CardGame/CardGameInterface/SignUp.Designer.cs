@@ -110,7 +110,7 @@
             // 
             this.BtnSignUp.Location = new System.Drawing.Point(427, 461);
             this.BtnSignUp.Name = "BtnSignUp";
-            this.BtnSignUp.Size = new System.Drawing.Size(222, 81);
+            this.BtnSignUp.Size = new System.Drawing.Size(244, 81);
             this.BtnSignUp.TabIndex = 7;
             this.BtnSignUp.Text = "Enregistrez-vous";
             this.BtnSignUp.UseVisualStyleBackColor = true;
@@ -152,7 +152,7 @@
             this.BtnSignUpToLogin.Name = "BtnSignUpToLogin";
             this.BtnSignUpToLogin.Size = new System.Drawing.Size(191, 69);
             this.BtnSignUpToLogin.TabIndex = 11;
-            this.BtnSignUpToLogin.Text = "Se connectez";
+            this.BtnSignUpToLogin.Text = "Se connecter";
             this.BtnSignUpToLogin.UseVisualStyleBackColor = true;
             this.BtnSignUpToLogin.Click += new System.EventHandler(this.BtnSignUpToLogin_Click);
             // 
