@@ -1,5 +1,6 @@
 ﻿using CardGameManagement;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,6 @@ namespace CardGameInterface
     public partial class Login : Form
     {
         private List<string> UserPreferences;
-        
 
         public Login()
         {
@@ -31,11 +31,17 @@ namespace CardGameInterface
             if (File.Exists(@"C:\UserPreferences.json"))
             {
                 FromJson();
-                //
-                //string test = UserPreferences.First();
-                //int test2 = Int32.Parse(test);
-                //this.Top = test2;
-                //
+
+                this.WindowState = FormWindowState.Normal;
+                string test = UserPreferences[0];
+                string test2 = UserPreferences[1];
+                int test3 = Int32.Parse(test);
+                int test4 = Int32.Parse(test2);
+                Point newPoint = new Point();
+                newPoint.X = test3;
+                newPoint.Y = test4;
+                this.Location = newPoint;
+                Properties.Settings.Default.Save();
             }
             else
             {
@@ -55,6 +61,10 @@ namespace CardGameInterface
         {
             this.MaximumSize = new Size(1280, 800);
             this.MinimumSize = new Size(1280, 800);
+
+            this.WindowState = Properties.Settings.Default.F1State;
+            this.Location = Properties.Settings.Default.F1Location;
+            this.Size = Properties.Settings.Default.F1Size;
         }
 
         private void BtnLogin_Click(object sender, EventArgs e)
@@ -100,10 +110,11 @@ namespace CardGameInterface
             using (StreamReader file = File.OpenText(@"c:\UserPreferences.json"))
             {
                 JsonSerializer serializer = new JsonSerializer();
-                var res = JsonConvert.DeserializeObject(File.ReadAllText(@"c:\UserPreferences.json"));
-                string test = res.ToString();
+                var expandoConverter = new ExpandoObjectConverter();
+                var obj = JsonConvert.DeserializeObject<List<dynamic>>(File.ReadAllText(@"c:\UserPreferences.json"));
                 UserPreferences.Clear();
-                UserPreferences.Add(test);
+                UserPreferences.Add(obj[0]);
+                UserPreferences.Add(obj[1]);
                 file.Close();
             }
         }
@@ -116,6 +127,11 @@ namespace CardGameInterface
 
             this.Hide();
             SignUpForm.ShowDialog();
+        }
+
+        private void Login_Closing(object sender, FormClosingEventArgs e)
+        {
+
         }
     }
 }
