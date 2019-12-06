@@ -22,7 +22,6 @@ namespace CardGameManagement
         private void InitConnection()
         {
             // Creation of the connection string : where, who
-            // Avoid user id and pwd hardcoded
             string connectionString = "SERVER=127.0.0.1; UID=root; PASSWORD=Pa$$w0rd";
             connection = new MySqlConnection(connectionString);
         }
@@ -38,7 +37,7 @@ namespace CardGameManagement
             MySqlCommand cmd = connection.CreateCommand();
 
             // SQL request
-            cmd.CommandText = "CREATE DATABASE IF NOT EXISTS CardGame; USE CardGame; CREATE TABLE CardGame.Users(idUsers INT, Email VARCHAR(100), PasswordHash VARCHAR(100)); ALTER TABLE Users ADD CONSTRAINT AUTO_INCREMENT PRIMARY KEY(idUsers); ALTER TABLE `users` CHANGE COLUMN `idUsers` `idUsers` INT(11) NOT NULL AUTO_INCREMENT FIRST; ";
+            cmd.CommandText = "CREATE DATABASE IF NOT EXISTS CardGame; USE CardGame; CREATE TABLE CardGame.Users(idUsers INT, Email VARCHAR(100), PasswordHash VARCHAR(500)); ALTER TABLE Users ADD CONSTRAINT AUTO_INCREMENT PRIMARY KEY(idUsers); ALTER TABLE `users` CHANGE COLUMN `idUsers` `idUsers` INT(11) NOT NULL AUTO_INCREMENT FIRST; ";
 
             // Execute the SQL command
             cmd.ExecuteNonQuery();
