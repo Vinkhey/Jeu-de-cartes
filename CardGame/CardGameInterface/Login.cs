@@ -1,5 +1,6 @@
 ﻿using CardGameManagement;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,6 @@ namespace CardGameInterface
     public partial class Login : Form
     {
         private List<string> UserPreferences;
-        
 
         public Login()
         {
@@ -31,11 +31,17 @@ namespace CardGameInterface
             if (File.Exists(@"C:\UserPreferences.json"))
             {
                 FromJson();
-                //
-                //string test = UserPreferences.First();
-                //int test2 = Int32.Parse(test);
-                //this.Top = test2;
-                //
+
+                this.WindowState = FormWindowState.Normal;
+                string test = UserPreferences[0];
+                string test2 = UserPreferences[1];
+                int test3 = Int32.Parse(test);
+                int test4 = Int32.Parse(test2);
+                Point newPoint = new Point();
+                newPoint.X = test3;
+                newPoint.Y = test4;
+                this.Location = newPoint;
+                Properties.Settings.Default.Save();
             }
             else
             {
@@ -55,29 +61,29 @@ namespace CardGameInterface
         {
             this.MaximumSize = new Size(1280, 800);
             this.MinimumSize = new Size(1280, 800);
-<<<<<<< Updated upstream
-=======
 
-            this.WindowState = Properties.Settings.Default.F1State;
-            this.Location = Properties.Settings.Default.F1Location;
-            this.Size = Properties.Settings.Default.F1Size;
+            this.WindowState = Properties.Settings.Default.LoginState;
+            this.Location = Properties.Settings.Default.LoginPoint;
+            this.Size = Properties.Settings.Default.LoginSize;
 
-            if (Properties.Settings.Default.F1Size.Width == 0) Properties.Settings.Default.Upgrade();
+            // Upgrade?
+            if (Properties.Settings.Default.LoginSize.Width == 0) Properties.Settings.Default.Upgrade();
 
-            if (Properties.Settings.Default.F1Size.Width == 0 || Properties.Settings.Default.F1Size.Height == 0)
+            if (Properties.Settings.Default.LoginSize.Width == 0 || Properties.Settings.Default.LoginSize.Height == 0)
             {
-
+                // first start
+                // optional: add default values
             }
             else
             {
-                this.WindowState = Properties.Settings.Default.F1State;
+                this.WindowState = Properties.Settings.Default.LoginState;
 
+                // we don't want a minimized window at startup
                 if (this.WindowState == FormWindowState.Minimized) this.WindowState = FormWindowState.Normal;
 
-                this.Location = Properties.Settings.Default.F1Location;
-                this.Size = Properties.Settings.Default.F1Size;
+                this.Location = Properties.Settings.Default.LoginPoint;
+                this.Size = Properties.Settings.Default.LoginSize;
             }
->>>>>>> Stashed changes
         }
 
         private void BtnLogin_Click(object sender, EventArgs e)
@@ -123,10 +129,11 @@ namespace CardGameInterface
             using (StreamReader file = File.OpenText(@"c:\UserPreferences.json"))
             {
                 JsonSerializer serializer = new JsonSerializer();
-                var res = JsonConvert.DeserializeObject(File.ReadAllText(@"c:\UserPreferences.json"));
-                string test = res.ToString();
+                var expandoConverter = new ExpandoObjectConverter();
+                var obj = JsonConvert.DeserializeObject<List<dynamic>>(File.ReadAllText(@"c:\UserPreferences.json"));
                 UserPreferences.Clear();
-                UserPreferences.Add(test);
+                UserPreferences.Add(obj[0]);
+                UserPreferences.Add(obj[1]);
                 file.Close();
             }
         }
@@ -140,28 +147,25 @@ namespace CardGameInterface
             this.Hide();
             SignUpForm.ShowDialog();
         }
-<<<<<<< Updated upstream
-=======
 
         private void Login_Closing(object sender, FormClosingEventArgs e)
         {
-            Properties.Settings.Default.F1State = this.WindowState;
+            Properties.Settings.Default.LoginState = this.WindowState;
             if (this.WindowState == FormWindowState.Normal)
             {
                 // save location and size if the state is normal
-                Properties.Settings.Default.F1Location = this.Location;
-                Properties.Settings.Default.F1Size = this.Size;
+                Properties.Settings.Default.LoginPoint = this.Location;
+                Properties.Settings.Default.LoginSize = this.Size;
             }
             else
             {
                 // save the RestoreBounds if the form is minimized or maximized!
-                Properties.Settings.Default.F1Location = this.RestoreBounds.Location;
-                Properties.Settings.Default.F1Size = this.RestoreBounds.Size;
+                Properties.Settings.Default.LoginPoint = this.RestoreBounds.Location;
+                Properties.Settings.Default.LoginSize = this.RestoreBounds.Size;
             }
 
             // don't forget to save the settings
             Properties.Settings.Default.Save();
         }
->>>>>>> Stashed changes
     }
 }
