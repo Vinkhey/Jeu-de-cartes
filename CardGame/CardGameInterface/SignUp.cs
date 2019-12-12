@@ -9,11 +9,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace CardGameInterface
 {
     public partial class SignUp : Form
     {
+        private List<string> UserPreferences;
+
         public SignUp()
         {
             InitializeComponent();
@@ -23,6 +28,40 @@ namespace CardGameInterface
         {
             this.MaximumSize = new Size(1280, 800);
             this.MinimumSize = new Size(1280, 800);
+
+            if (UserPreferences == null)
+            {
+                UserPreferences = new List<string> { "0", "0" };
+            }
+
+            if (File.Exists(@"C:\UserPreferences.json"))
+            {
+                FromJson();
+
+                string FormPositionX = UserPreferences[0];
+                string FormPositionY = UserPreferences[1];
+
+                int FormPositionXToInt = Int32.Parse(FormPositionX);
+                int FormPositionYToInt = Int32.Parse(FormPositionY);
+
+                Point newPoint = new Point();
+
+                newPoint.X = FormPositionXToInt;
+                newPoint.Y = FormPositionYToInt;
+
+                this.Location = newPoint;
+            }
+            else
+            {
+                using (StreamWriter file = File.CreateText(@"C:\UserPreferences.json"))
+                {
+
+                    JsonSerializer serializer = new JsonSerializer();
+                    //serialize object directly into file stream
+                    serializer.Serialize(file, UserPreferences);
+                    file.Close();
+                }
+            }
 
             try
             {
@@ -35,6 +74,40 @@ namespace CardGameInterface
             {
                 //we display the error message.
                 Console.WriteLine(exc.Message);
+            }
+
+
+        }
+
+        public void ToJson()
+        {
+            UserPreferences.Clear();
+            UserPreferences.Add(this.Location.X.ToString());
+            UserPreferences.Add(this.Location.Y.ToString());
+
+            System.IO.File.WriteAllText(@"C:\UserPreferences.json", "");
+
+            using (StreamWriter file = File.CreateText(@"C:\UserPreferences.json"))
+            {
+
+                JsonSerializer serializer = new JsonSerializer();
+                //serialize object directly into file stream
+                serializer.Serialize(file, UserPreferences);
+                file.Close();
+            }
+        }
+
+        public void FromJson()
+        {
+            using (StreamReader file = File.OpenText(@"c:\UserPreferences.json"))
+            {
+                JsonSerializer serializer = new JsonSerializer();
+                var expandoConverter = new ExpandoObjectConverter();
+                var obj = JsonConvert.DeserializeObject<List<dynamic>>(File.ReadAllText(@"c:\UserPreferences.json"));
+                UserPreferences.Clear();
+                UserPreferences.Add(obj[0]);
+                UserPreferences.Add(obj[1]);
+                file.Close();
             }
         }
 
@@ -108,9 +181,16 @@ namespace CardGameInterface
 
         private void BtnSignUpToLogin_Click(object sender, EventArgs e)
         {
+            ToJson();
             Login LoginForm = new Login();
+
             this.Hide();
             LoginForm.ShowDialog();
+        }
+
+        private void SignUp_Closing(object sender, FormClosingEventArgs e)
+        {
+            ToJson();
         }
     }
 }

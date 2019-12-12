@@ -147,6 +147,7 @@
             this.Controls.Add(this.LblEmailLogin);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Login";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Login_Closing);
             this.Load += new System.EventHandler(this.Login_Load);

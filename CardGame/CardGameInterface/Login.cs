@@ -32,16 +32,18 @@ namespace CardGameInterface
             {
                 FromJson();
 
-                this.WindowState = FormWindowState.Normal;
-                string test = UserPreferences[0];
-                string test2 = UserPreferences[1];
-                int test3 = Int32.Parse(test);
-                int test4 = Int32.Parse(test2);
+                string FormPositionX = UserPreferences[0];
+                string FormPositionY = UserPreferences[1];
+
+                int FormPositionXToInt = Int32.Parse(FormPositionX);
+                int FormPositionYToInt = Int32.Parse(FormPositionY);
+
                 Point newPoint = new Point();
-                newPoint.X = test3;
-                newPoint.Y = test4;
-                this.Location = newPoint;
-                Properties.Settings.Default.Save();
+
+                newPoint.X = FormPositionXToInt;
+                newPoint.Y = FormPositionYToInt;
+
+                this.Location = newPoint; 
             }
             else
             {
@@ -53,18 +55,13 @@ namespace CardGameInterface
                     serializer.Serialize(file, UserPreferences);
                     file.Close();
                 }
-            }
-                
+            }            
         }
 
         private void Login_Load(object sender, EventArgs e)
         {
             this.MaximumSize = new Size(1280, 800);
             this.MinimumSize = new Size(1280, 800);
-
-            this.WindowState = Properties.Settings.Default.F1State;
-            this.Location = Properties.Settings.Default.F1Location;
-            this.Size = Properties.Settings.Default.F1Size;
         }
 
         private void BtnLogin_Click(object sender, EventArgs e)
@@ -102,7 +99,6 @@ namespace CardGameInterface
                 serializer.Serialize(file, UserPreferences);
                 file.Close();
             }
-            
         }
 
         public void FromJson()
@@ -119,11 +115,10 @@ namespace CardGameInterface
             }
         }
 
-
         private void BtnLoginToSignUp_Click(object sender, EventArgs e)
         {
-            SignUp SignUpForm = new SignUp();
             ToJson();
+            SignUp SignUpForm = new SignUp();    
 
             this.Hide();
             SignUpForm.ShowDialog();
@@ -131,7 +126,7 @@ namespace CardGameInterface
 
         private void Login_Closing(object sender, FormClosingEventArgs e)
         {
-
+            ToJson();
         }
     }
 }
