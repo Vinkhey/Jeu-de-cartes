@@ -94,7 +94,6 @@
             // 
             this.TxtBoxPswSignUp.Location = new System.Drawing.Point(427, 296);
             this.TxtBoxPswSignUp.Name = "TxtBoxPswSignUp";
-            this.TxtBoxPswSignUp.PasswordChar = '*';
             this.TxtBoxPswSignUp.Size = new System.Drawing.Size(244, 31);
             this.TxtBoxPswSignUp.TabIndex = 5;
             // 

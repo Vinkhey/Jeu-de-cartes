@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Common;
 using System.Linq;
 using System.Security.Cryptography;
@@ -23,12 +24,17 @@ namespace CardGameManagement
         {
             // Creation of the connection string : where, who
             string connectionString = "SERVER=127.0.0.1; UID=root; PASSWORD=Pa$$w0rd";
-            connection = new MySqlConnection(connectionString);
+            connection = new MySqlConnection(connectionString);        
         }
 
         public void OpenConnection()
         {
             connection.Open();
+        }
+
+        public void CloseConnection()
+        {
+            connection.Close();
         }
 
         public void CreateDatabase()
@@ -93,7 +99,6 @@ namespace CardGameManagement
         public string UserLogin(string UserLoginEmail, string UserLoginPassword)
         {
             MySqlCommand cmd = connection.CreateCommand();
-            connection.Open();
 
             byte[] data = System.Text.Encoding.ASCII.GetBytes(UserLoginPassword);
             data = new System.Security.Cryptography.SHA256Managed().ComputeHash(data);

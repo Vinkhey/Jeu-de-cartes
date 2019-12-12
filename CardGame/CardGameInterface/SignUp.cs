@@ -18,6 +18,7 @@ namespace CardGameInterface
     public partial class SignUp : Form
     {
         private List<string> UserPreferences;
+        DbConnector ConnexionDb = new DbConnector();
 
         public SignUp()
         {
@@ -65,18 +66,15 @@ namespace CardGameInterface
 
             try
             {
-                //init of the connection
                 DbConnector connDB = new DbConnector();
+                //init of the connection    
                 connDB.OpenConnection();
-                connDB.CreateDatabase();
             }
             catch (Exception exc)
             {
                 //we display the error message.
-                Console.WriteLine(exc.Message);
+                MessageBox.Show(exc.Message);
             }
-
-
         }
 
         public void ToJson()
@@ -113,7 +111,6 @@ namespace CardGameInterface
 
         private void BtnSignUp_Click(object sender, EventArgs e)
         {
-            DbConnector ConnexionDb = new DbConnector();
             RegisterCorrect form = new RegisterCorrect();
 
             try
@@ -158,9 +155,13 @@ namespace CardGameInterface
             {
                 MessageBox.Show("The passwords aren't the same !");
             }
-            else if(TxtBoxPswSignUp.Text.Length < 5)
+            else if(TxtBoxPswSignUp.Text.Length < 8)
             {
                 MessageBox.Show("Password is too small");
+            }
+            else if(TxtBoxEmailSignUp.Text.Contains("'"))
+            {
+                MessageBox.Show("Your email conatains an invalid character");
             }
             else
             {
@@ -191,6 +192,7 @@ namespace CardGameInterface
         private void SignUp_Closing(object sender, FormClosingEventArgs e)
         {
             ToJson();
+            ConnexionDb.CloseConnection();
         }
     }
 }

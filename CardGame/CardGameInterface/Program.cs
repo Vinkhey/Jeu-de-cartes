@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
+using System.Data;
 
 
 namespace CardGameInterface
@@ -16,17 +17,32 @@ namespace CardGameInterface
         [STAThread]
         static void Main()
         {
+            DbConnector connDB = new DbConnector();
+
             try
             {
-                //init of the connection
-                DbConnector connDB = new DbConnector();
+                //init of the connection    
                 connDB.OpenConnection();
-                connDB.CreateDatabase();
             }
             catch (Exception exc)
             {
                 //we display the error message.
-                Console.WriteLine(exc.Message);
+                MessageBox.Show(exc.Message);
+            }
+            finally
+            {
+                try
+                {
+                    //init of the connection    
+                    connDB.CreateDatabase();
+                    connDB.CloseConnection();
+                }
+                catch (Exception exc)
+                {
+                    //we display the error message.
+                    Console.WriteLine(exc.Message);
+                    connDB.CloseConnection();
+                }
             }
 
             Application.EnableVisualStyles();
