@@ -176,6 +176,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "SignUp";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Sign Up";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SignUp_Closing);
             this.Load += new System.EventHandler(this.SignUp_Load);

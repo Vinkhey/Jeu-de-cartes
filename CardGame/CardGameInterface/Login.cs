@@ -18,17 +18,20 @@ namespace CardGameInterface
     public partial class Login : Form
     {
         private List<string> UserPreferences;
+        private string WorkingDirectory;
 
         public Login()
         {
             InitializeComponent();
 
-            if(UserPreferences == null)
+            WorkingDirectory = Directory.GetCurrentDirectory();
+
+            if (UserPreferences == null)
             {
                 UserPreferences = new List<string> { "0", "0" };
             }
 
-            if (File.Exists(@"C:\UserPreferences.json"))
+            if (File.Exists($@"{WorkingDirectory}\UserPreferences.json"))
             {
                 FromJson();
 
@@ -47,7 +50,7 @@ namespace CardGameInterface
             }
             else
             {
-                using (StreamWriter file = File.CreateText(@"C:\UserPreferences.json"))
+                using (StreamWriter file = File.CreateText($@"{WorkingDirectory}\UserPreferences.json"))
                 {
                 
                     JsonSerializer serializer = new JsonSerializer();
@@ -101,9 +104,9 @@ namespace CardGameInterface
             UserPreferences.Add(this.Location.X.ToString());
             UserPreferences.Add(this.Location.Y.ToString());
 
-            System.IO.File.WriteAllText(@"C:\UserPreferences.json", "");
+            System.IO.File.WriteAllText($@"{WorkingDirectory}\UserPreferences.json", "");
 
-            using (StreamWriter file = File.CreateText(@"C:\UserPreferences.json"))
+            using (StreamWriter file = File.CreateText($@"{WorkingDirectory}\UserPreferences.json"))
             {
                 
                 JsonSerializer serializer = new JsonSerializer();
@@ -115,11 +118,11 @@ namespace CardGameInterface
 
         public void FromJson()
         {
-            using (StreamReader file = File.OpenText(@"c:\UserPreferences.json"))
+            using (StreamReader file = File.OpenText($@"{WorkingDirectory}\UserPreferences.json"))
             {
                 JsonSerializer serializer = new JsonSerializer();
                 var expandoConverter = new ExpandoObjectConverter();
-                var obj = JsonConvert.DeserializeObject<List<dynamic>>(File.ReadAllText(@"c:\UserPreferences.json"));
+                var obj = JsonConvert.DeserializeObject<List<dynamic>>(File.ReadAllText($@"{WorkingDirectory}\UserPreferences.json"));
                 UserPreferences.Clear();
                 UserPreferences.Add(obj[0]);
                 UserPreferences.Add(obj[1]);
