@@ -37,10 +37,10 @@
             // LblRegister
             // 
             this.LblRegister.AutoSize = true;
-            this.LblRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblRegister.Location = new System.Drawing.Point(177, 58);
+            this.LblRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblRegister.Location = new System.Drawing.Point(225, 34);
             this.LblRegister.Name = "LblRegister";
-            this.LblRegister.Size = new System.Drawing.Size(653, 73);
+            this.LblRegister.Size = new System.Drawing.Size(378, 42);
             this.LblRegister.TabIndex = 0;
             this.LblRegister.Text = "Enregistrement validé";
             // 
@@ -48,7 +48,7 @@
             // 
             this.LblEmailRegister.AutoSize = true;
             this.LblEmailRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblEmailRegister.Location = new System.Drawing.Point(282, 261);
+            this.LblEmailRegister.Location = new System.Drawing.Point(236, 153);
             this.LblEmailRegister.Name = "LblEmailRegister";
             this.LblEmailRegister.Size = new System.Drawing.Size(30, 25);
             this.LblEmailRegister.TabIndex = 1;
@@ -58,7 +58,7 @@
             // 
             this.LblInscrit.AutoSize = true;
             this.LblInscrit.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblInscrit.Location = new System.Drawing.Point(377, 261);
+            this.LblInscrit.Location = new System.Drawing.Point(323, 153);
             this.LblInscrit.Name = "LblInscrit";
             this.LblInscrit.Size = new System.Drawing.Size(243, 25);
             this.LblInscrit.TabIndex = 2;
@@ -66,9 +66,10 @@
             // 
             // BtnRegister
             // 
-            this.BtnRegister.Location = new System.Drawing.Point(344, 379);
+            this.BtnRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnRegister.Location = new System.Drawing.Point(306, 233);
             this.BtnRegister.Name = "BtnRegister";
-            this.BtnRegister.Size = new System.Drawing.Size(222, 81);
+            this.BtnRegister.Size = new System.Drawing.Size(188, 57);
             this.BtnRegister.TabIndex = 3;
             this.BtnRegister.Text = "Connectez-vous";
             this.BtnRegister.UseVisualStyleBackColor = true;
@@ -78,7 +79,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1017, 648);
+            this.BackColor = System.Drawing.Color.IndianRed;
+            this.ClientSize = new System.Drawing.Size(798, 324);
             this.Controls.Add(this.BtnRegister);
             this.Controls.Add(this.LblInscrit);
             this.Controls.Add(this.LblEmailRegister);
@@ -86,6 +88,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "RegisterCorrect";
             this.Text = "RegisterCorrect";
+            this.Load += new System.EventHandler(this.RegisterCorrect_Load_1);
             this.ResumeLayout(false);
             this.PerformLayout();
 

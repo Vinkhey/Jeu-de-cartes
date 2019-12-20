@@ -30,8 +30,7 @@ namespace CardGameInterface
 
         private void SignUp_Load(object sender, EventArgs e)
         {
-            this.MaximumSize = new Size(1280, 800);
-            this.MinimumSize = new Size(1280, 800);
+           
 
             if (UserPreferences == null)
             {

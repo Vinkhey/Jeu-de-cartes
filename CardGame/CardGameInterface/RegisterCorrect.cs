@@ -20,8 +20,7 @@ namespace CardGameInterface
 
         private void RegisterCorrect_Load(object sender, EventArgs e)
         {
-            this.MaximumSize = new Size(980, 720);
-            this.MinimumSize = new Size(980, 720);
+           
         }
 
         private void BtnRegister_Click(object sender, EventArgs e)
@@ -30,6 +29,11 @@ namespace CardGameInterface
 
             this.Hide();
             login.ShowDialog();
+        }
+
+        private void RegisterCorrect_Load_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

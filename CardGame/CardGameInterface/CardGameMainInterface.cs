@@ -15,12 +15,16 @@ namespace CardGameInterface
         public CardGameMainInterface(string UserConnected)
         {
             InitializeComponent();
-            LblUserConnected.Text = UserConnected;
         }
 
         private void BtnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void CardGameMainInterface_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
