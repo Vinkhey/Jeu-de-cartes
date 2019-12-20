@@ -45,11 +45,11 @@
             // LblSignUp
             // 
             this.LblSignUp.AutoSize = true;
-            this.LblSignUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblSignUp.Location = new System.Drawing.Point(287, 32);
+            this.LblSignUp.Font = new System.Drawing.Font("Mistral", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblSignUp.Location = new System.Drawing.Point(272, 22);
             this.LblSignUp.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.LblSignUp.Name = "LblSignUp";
-            this.LblSignUp.Size = new System.Drawing.Size(151, 42);
+            this.LblSignUp.Size = new System.Drawing.Size(190, 76);
             this.LblSignUp.TabIndex = 0;
             this.LblSignUp.Text = "Sign Up";
             // 
@@ -164,7 +164,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.IndianRed;
+            this.BackColor = System.Drawing.Color.DarkGray;
             this.ClientSize = new System.Drawing.Size(669, 449);
             this.Controls.Add(this.BtnSignUpToLogin);
             this.Controls.Add(this.LblPswverifErrorSignUp);

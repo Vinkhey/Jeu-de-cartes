@@ -33,6 +33,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.button8 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -40,12 +41,11 @@
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.button7 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.progressBar2 = new System.Windows.Forms.ProgressBar();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -104,6 +104,15 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Info Carte";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // button8
+            // 
+            this.button8.BackColor = System.Drawing.Color.White;
+            this.button8.Location = new System.Drawing.Point(30, 28);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(110, 161);
+            this.button8.TabIndex = 1;
+            this.button8.UseVisualStyleBackColor = false;
             // 
             // button3
             // 
@@ -178,6 +187,16 @@
             this.tabPage4.Text = "Info carte";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // button7
+            // 
+            this.button7.BackColor = System.Drawing.Color.White;
+            this.button7.ForeColor = System.Drawing.Color.Transparent;
+            this.button7.Location = new System.Drawing.Point(30, 24);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(110, 161);
+            this.button7.TabIndex = 0;
+            this.button7.UseVisualStyleBackColor = false;
+            // 
             // button6
             // 
             this.button6.BackColor = System.Drawing.Color.White;
@@ -214,30 +233,11 @@
             this.progressBar2.Size = new System.Drawing.Size(585, 31);
             this.progressBar2.TabIndex = 3;
             // 
-            // button7
-            // 
-            this.button7.BackColor = System.Drawing.Color.White;
-            this.button7.ForeColor = System.Drawing.Color.Transparent;
-            this.button7.Location = new System.Drawing.Point(30, 24);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(110, 161);
-            this.button7.TabIndex = 0;
-            this.button7.UseVisualStyleBackColor = false;
-            // 
-            // button8
-            // 
-            this.button8.BackColor = System.Drawing.Color.White;
-            this.button8.Location = new System.Drawing.Point(30, 28);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(110, 161);
-            this.button8.TabIndex = 1;
-            this.button8.UseVisualStyleBackColor = false;
-            // 
             // CardGameMainInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.IndianRed;
+            this.BackColor = System.Drawing.Color.DarkGray;
             this.ClientSize = new System.Drawing.Size(1215, 740);
             this.Controls.Add(this.progressBar2);
             this.Controls.Add(this.groupBox2);
