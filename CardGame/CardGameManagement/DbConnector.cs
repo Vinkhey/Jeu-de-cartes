@@ -99,6 +99,7 @@ namespace CardGameManagement
         public string UserLogin(string UserLoginEmail, string UserLoginPassword)
         {
             MySqlCommand cmd = connection.CreateCommand();
+            connection.Open();
 
             byte[] data = System.Text.Encoding.ASCII.GetBytes(UserLoginPassword);
             data = new System.Security.Cryptography.SHA256Managed().ComputeHash(data);
