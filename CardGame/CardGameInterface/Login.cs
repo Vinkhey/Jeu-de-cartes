@@ -91,9 +91,9 @@ namespace CardGameInterface
             }
             else
             {
-                CardGameMainInterface CardGameMainInterface = new CardGameMainInterface(TxtBoxEmailLogin.Text);
+                Menu MainMenu = new Menu();
                 this.Hide();
-                CardGameMainInterface.ShowDialog();
+                MainMenu.ShowDialog();
             }
             
         }

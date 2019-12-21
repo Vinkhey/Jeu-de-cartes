@@ -12,7 +12,7 @@ namespace CardGameInterface
 {
     public partial class CardGameMainInterface : Form
     {
-        public CardGameMainInterface(string UserConnected)
+        public CardGameMainInterface()
         {
             InitializeComponent();
         }

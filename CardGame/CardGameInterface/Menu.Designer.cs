@@ -28,67 +28,90 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.LblMenu = new System.Windows.Forms.Label();
+            this.BtnPlay = new System.Windows.Forms.Button();
+            this.BtnOptions = new System.Windows.Forms.Button();
+            this.BtnQuit = new System.Windows.Forms.Button();
+            this.BtnHelp = new System.Windows.Forms.Button();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.BtnSignOut = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // label1
+            // LblMenu
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Mistral", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(307, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(143, 76);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Menu";
+            this.LblMenu.AutoSize = true;
+            this.LblMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblMenu.Location = new System.Drawing.Point(290, 9);
+            this.LblMenu.Name = "LblMenu";
+            this.LblMenu.Size = new System.Drawing.Size(193, 73);
+            this.LblMenu.TabIndex = 0;
+            this.LblMenu.Text = "Menu";
             // 
-            // button1
+            // BtnPlay
             // 
-            this.button1.BackColor = System.Drawing.Color.Silver;
-            this.button1.Font = new System.Drawing.Font("Mistral", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(271, 154);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(232, 50);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Jouer";
-            this.button1.UseVisualStyleBackColor = false;
+            this.BtnPlay.BackColor = System.Drawing.Color.Silver;
+            this.BtnPlay.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnPlay.Location = new System.Drawing.Point(271, 154);
+            this.BtnPlay.Name = "BtnPlay";
+            this.BtnPlay.Size = new System.Drawing.Size(232, 50);
+            this.BtnPlay.TabIndex = 1;
+            this.BtnPlay.Text = "Jouer";
+            this.BtnPlay.UseVisualStyleBackColor = false;
+            this.BtnPlay.Click += new System.EventHandler(this.BtnPlay_Click);
             // 
-            // button2
+            // BtnOptions
             // 
-            this.button2.BackColor = System.Drawing.Color.Silver;
-            this.button2.Font = new System.Drawing.Font("Mistral", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(271, 236);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(231, 50);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Réglages";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.BtnOptions.BackColor = System.Drawing.Color.Silver;
+            this.BtnOptions.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnOptions.Location = new System.Drawing.Point(271, 236);
+            this.BtnOptions.Name = "BtnOptions";
+            this.BtnOptions.Size = new System.Drawing.Size(231, 50);
+            this.BtnOptions.TabIndex = 2;
+            this.BtnOptions.Text = "Réglages";
+            this.BtnOptions.UseVisualStyleBackColor = false;
             // 
-            // button3
+            // BtnQuit
             // 
-            this.button3.BackColor = System.Drawing.Color.Silver;
-            this.button3.Font = new System.Drawing.Font("Mistral", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(271, 385);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(232, 50);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Quitter";
-            this.button3.UseVisualStyleBackColor = false;
+            this.BtnQuit.BackColor = System.Drawing.Color.Silver;
+            this.BtnQuit.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnQuit.Location = new System.Drawing.Point(271, 385);
+            this.BtnQuit.Name = "BtnQuit";
+            this.BtnQuit.Size = new System.Drawing.Size(232, 50);
+            this.BtnQuit.TabIndex = 3;
+            this.BtnQuit.Text = "Quitter";
+            this.BtnQuit.UseVisualStyleBackColor = false;
+            this.BtnQuit.Click += new System.EventHandler(this.BtnQuit_Click);
             // 
-            // button4
+            // BtnHelp
             // 
-            this.button4.BackColor = System.Drawing.Color.Silver;
-            this.button4.Font = new System.Drawing.Font("Mistral", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(271, 310);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(231, 49);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "Aide";
-            this.button4.UseVisualStyleBackColor = false;
+            this.BtnHelp.BackColor = System.Drawing.Color.Silver;
+            this.BtnHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnHelp.Location = new System.Drawing.Point(271, 310);
+            this.BtnHelp.Name = "BtnHelp";
+            this.BtnHelp.Size = new System.Drawing.Size(231, 49);
+            this.BtnHelp.TabIndex = 4;
+            this.BtnHelp.Text = "Aide";
+            this.BtnHelp.UseVisualStyleBackColor = false;
+            // 
+            // lblEmail
+            // 
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Location = new System.Drawing.Point(650, 25);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(0, 13);
+            this.lblEmail.TabIndex = 5;
+            // 
+            // BtnSignOut
+            // 
+            this.BtnSignOut.BackColor = System.Drawing.Color.Silver;
+            this.BtnSignOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnSignOut.Location = new System.Drawing.Point(619, 393);
+            this.BtnSignOut.Name = "BtnSignOut";
+            this.BtnSignOut.Size = new System.Drawing.Size(180, 42);
+            this.BtnSignOut.TabIndex = 6;
+            this.BtnSignOut.Text = "Se deconnecter";
+            this.BtnSignOut.UseVisualStyleBackColor = false;
+            this.BtnSignOut.Click += new System.EventHandler(this.BtnSignOut_Click);
             // 
             // Menu
             // 
@@ -96,11 +119,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
             this.ClientSize = new System.Drawing.Size(820, 506);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.BtnSignOut);
+            this.Controls.Add(this.lblEmail);
+            this.Controls.Add(this.BtnHelp);
+            this.Controls.Add(this.BtnQuit);
+            this.Controls.Add(this.BtnOptions);
+            this.Controls.Add(this.BtnPlay);
+            this.Controls.Add(this.LblMenu);
             this.Name = "Menu";
             this.Text = "Menu";
             this.ResumeLayout(false);
@@ -110,10 +135,12 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Label LblMenu;
+        private System.Windows.Forms.Button BtnPlay;
+        private System.Windows.Forms.Button BtnOptions;
+        private System.Windows.Forms.Button BtnQuit;
+        private System.Windows.Forms.Button BtnHelp;
+        private System.Windows.Forms.Label lblEmail;
+        private System.Windows.Forms.Button BtnSignOut;
     }
 }

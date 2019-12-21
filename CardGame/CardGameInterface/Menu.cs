@@ -17,9 +17,25 @@ namespace CardGameInterface
             InitializeComponent();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void BtnQuit_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
 
+        private void BtnPlay_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+
+            CardGameMainInterface GameInterface = new CardGameMainInterface();
+            GameInterface.ShowDialog();
+        }
+
+        private void BtnSignOut_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+
+            Login LoginForm = new Login();
+            LoginForm.ShowDialog();
         }
     }
 }
