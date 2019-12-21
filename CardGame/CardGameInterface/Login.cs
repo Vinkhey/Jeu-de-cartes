@@ -63,8 +63,6 @@ namespace CardGameInterface
 
         private void Login_Load(object sender, EventArgs e)
         {
-      
-
             try
             {
                 DbConnector connDB = new DbConnector();

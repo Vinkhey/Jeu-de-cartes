@@ -64,19 +64,7 @@ namespace CardGameInterface
                     serializer.Serialize(file, UserPreferences);
                     file.Close();
                 }
-            }
-
-            try
-            {
-                DbConnector connDB = new DbConnector();
-                //init of the connection    
-                connDB.OpenConnection();
-            }
-            catch (Exception exc)
-            {
-                //we display the error message.
-                MessageBox.Show(exc.Message);
-            }
+            } 
         }
 
         public void ToJson()

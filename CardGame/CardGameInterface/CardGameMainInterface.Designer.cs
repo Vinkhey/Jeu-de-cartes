@@ -46,6 +46,7 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.progressBar2 = new System.Windows.Forms.ProgressBar();
+            this.BtnQuitGame = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -233,20 +234,32 @@
             this.progressBar2.Size = new System.Drawing.Size(585, 31);
             this.progressBar2.TabIndex = 3;
             // 
+            // BtnQuitGame
+            // 
+            this.BtnQuitGame.Location = new System.Drawing.Point(1078, 391);
+            this.BtnQuitGame.Name = "BtnQuitGame";
+            this.BtnQuitGame.Size = new System.Drawing.Size(101, 23);
+            this.BtnQuitGame.TabIndex = 4;
+            this.BtnQuitGame.Text = "Quitter la partie";
+            this.BtnQuitGame.UseVisualStyleBackColor = true;
+            this.BtnQuitGame.Click += new System.EventHandler(this.BtnQuitGame_Click);
+            // 
             // CardGameMainInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
             this.ClientSize = new System.Drawing.Size(1215, 740);
+            this.Controls.Add(this.BtnQuitGame);
             this.Controls.Add(this.progressBar2);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.progressBar1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "CardGameMainInterface";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "CardGameInterface";
-            this.Load += new System.EventHandler(this.CardGameMainInterface_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CardGameMainInterface_FormClosing);
             this.groupBox1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
@@ -277,5 +290,6 @@
         private System.Windows.Forms.ProgressBar progressBar2;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button BtnQuitGame;
     }
 }
