@@ -114,7 +114,17 @@ namespace CardGameInterface
 
             if (TxtBoxEmailSignUp.Text == "" || TxtBoxPswSignUp.Text == "" || TxtBoxPswVerifSignUp.Text == "")
             {
-                if(TxtBoxEmailSignUp.Text == "")
+                if (TxtBoxPswSignUp.Text.Length < 8 && TxtBoxPswSignUp.Text.Length > 0)
+                {
+                    MessageBox.Show("Password is too small");
+                }
+
+                if(TxtBoxPswVerifSignUp.Text.Length < 8 && TxtBoxPswVerifSignUp.Text.Length > 0)
+                {
+                    MessageBox.Show("Password is too small");
+                }
+
+                if (TxtBoxEmailSignUp.Text == "")
                 {
                     LblMailErrorSignUp.Text = "Ce champs est obligatoire";
                 }
@@ -145,7 +155,7 @@ namespace CardGameInterface
             {
                 MessageBox.Show("The passwords aren't the same !");
             }
-            else if(TxtBoxPswSignUp.Text.Length < 8)
+            else if(TxtBoxPswSignUp.Text.Length < 8 || TxtBoxPswVerifSignUp.Text.Length < 8)
             {
                 MessageBox.Show("Password is too small");
             }

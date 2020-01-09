@@ -97,6 +97,7 @@
             // 
             this.TxtBoxPswSignUp.Location = new System.Drawing.Point(252, 192);
             this.TxtBoxPswSignUp.Name = "TxtBoxPswSignUp";
+            this.TxtBoxPswSignUp.PasswordChar = '*';
             this.TxtBoxPswSignUp.Size = new System.Drawing.Size(244, 31);
             this.TxtBoxPswSignUp.TabIndex = 5;
             // 
@@ -122,31 +123,31 @@
             // LblMailErrorSignUp
             // 
             this.LblMailErrorSignUp.AutoSize = true;
-            this.LblMailErrorSignUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblMailErrorSignUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblMailErrorSignUp.ForeColor = System.Drawing.Color.Red;
-            this.LblMailErrorSignUp.Location = new System.Drawing.Point(687, 237);
+            this.LblMailErrorSignUp.Location = new System.Drawing.Point(502, 138);
             this.LblMailErrorSignUp.Name = "LblMailErrorSignUp";
-            this.LblMailErrorSignUp.Size = new System.Drawing.Size(0, 20);
+            this.LblMailErrorSignUp.Size = new System.Drawing.Size(0, 15);
             this.LblMailErrorSignUp.TabIndex = 8;
             // 
             // LblPswErrorSignUp
             // 
             this.LblPswErrorSignUp.AutoSize = true;
-            this.LblPswErrorSignUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblPswErrorSignUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblPswErrorSignUp.ForeColor = System.Drawing.Color.Red;
-            this.LblPswErrorSignUp.Location = new System.Drawing.Point(687, 303);
+            this.LblPswErrorSignUp.Location = new System.Drawing.Point(502, 202);
             this.LblPswErrorSignUp.Name = "LblPswErrorSignUp";
-            this.LblPswErrorSignUp.Size = new System.Drawing.Size(0, 20);
+            this.LblPswErrorSignUp.Size = new System.Drawing.Size(0, 15);
             this.LblPswErrorSignUp.TabIndex = 9;
             // 
             // LblPswverifErrorSignUp
             // 
             this.LblPswverifErrorSignUp.AutoSize = true;
-            this.LblPswverifErrorSignUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblPswverifErrorSignUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblPswverifErrorSignUp.ForeColor = System.Drawing.Color.Red;
-            this.LblPswverifErrorSignUp.Location = new System.Drawing.Point(687, 365);
+            this.LblPswverifErrorSignUp.Location = new System.Drawing.Point(502, 261);
             this.LblPswverifErrorSignUp.Name = "LblPswverifErrorSignUp";
-            this.LblPswverifErrorSignUp.Size = new System.Drawing.Size(0, 20);
+            this.LblPswverifErrorSignUp.Size = new System.Drawing.Size(0, 15);
             this.LblPswverifErrorSignUp.TabIndex = 10;
             // 
             // BtnSignUpToLogin
