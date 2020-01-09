@@ -161,7 +161,7 @@ namespace CardGameInterface
             }
             else if(TxtBoxEmailSignUp.Text.Contains("'"))
             {
-                MessageBox.Show("Your email conatains an invalid character");
+                MessageBox.Show("Your email contains an invalid character");
             }
             else
             {

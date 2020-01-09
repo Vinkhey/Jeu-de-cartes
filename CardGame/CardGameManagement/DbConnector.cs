@@ -51,46 +51,66 @@ namespace CardGameManagement
 
         public string AddUser(string SignUpEmail, string SignUpPassword)
         {
-            // Create a SQL command
-            MySqlCommand cmd = connection.CreateCommand();
-            string QueryResultEmail = "";
-            connection.Open();
-
-            cmd.CommandText = $"USE CardGame; SELECT Email, PasswordHash FROM users WHERE Email LIKE '{SignUpEmail}'";
-
-            cmd.ExecuteNonQuery();
-
-            DbDataReader reader = cmd.ExecuteReader();
-
-            if (reader.HasRows)
+            if (connection.State == ConnectionState.Closed && connection != null)
             {
-                //we go through the result of the select, we might get only one response. 
-                //Despite this, we use a while
-                while (reader.Read())
+                try
                 {
-                    QueryResultEmail = reader.GetString(0);
+                    //init of the connection    
+                    connection.Open();
+                }
+                catch (Exception exc)
+                {
+                    //we display the error message.
+                    MessageBox.Show(exc.Message);
+                }
+            }
+
+            if (connection.State == ConnectionState.Open)
+            {
+                // Create a SQL command
+                MySqlCommand cmd = connection.CreateCommand();
+                string QueryResultEmail = "";
+
+                cmd.CommandText = $"USE CardGame; SELECT Email, PasswordHash FROM users WHERE Email LIKE '{SignUpEmail}'";
+
+                cmd.ExecuteNonQuery();
+
+                DbDataReader reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    //we go through the result of the select, we might get only one response. 
+                    //Despite this, we use a while
+                    while (reader.Read())
+                    {
+                        QueryResultEmail = reader.GetString(0);
+                    }
+
+                    reader.Close();
                 }
 
                 reader.Close();
-            }
 
-            reader.Close();
+                if (QueryResultEmail != SignUpEmail)
+                {
+                    byte[] data = System.Text.Encoding.ASCII.GetBytes(SignUpPassword);
+                    data = new System.Security.Cryptography.SHA256Managed().ComputeHash(data);
+                    String hashPassword = System.Text.Encoding.ASCII.GetString(data);
 
-            if (QueryResultEmail != SignUpEmail)
-            {
-                byte[] data = System.Text.Encoding.ASCII.GetBytes(SignUpPassword);
-                data = new System.Security.Cryptography.SHA256Managed().ComputeHash(data);
-                String hashPassword = System.Text.Encoding.ASCII.GetString(data);
+                    // SQL request
+                    cmd.CommandText = $"USE CardGame; INSERT INTO users(Email, PasswordHash) VALUES('{SignUpEmail}', '{hashPassword}') ";
 
-                // SQL request
-                cmd.CommandText = $"USE CardGame; INSERT INTO users(Email, PasswordHash) VALUES('{SignUpEmail}', '{hashPassword}') ";
-
-                // Execute the SQL command
-                cmd.ExecuteNonQuery();
+                    // Execute the SQL command
+                    cmd.ExecuteNonQuery();
+                }
+                else
+                {
+                    MessageBox.Show("Connection to database lost !");
+                }
             }
             else
             {
-                return "User with this email assigned already exists";
+                return "Still unable to connect to database !";
             }
 
             return "";
@@ -98,26 +118,46 @@ namespace CardGameManagement
 
         public string UserLogin(string UserLoginEmail, string UserLoginPassword)
         {
-            MySqlCommand cmd = connection.CreateCommand();
-            connection.Open();
-
-            byte[] data = System.Text.Encoding.ASCII.GetBytes(UserLoginPassword);
-            data = new System.Security.Cryptography.SHA256Managed().ComputeHash(data);
-            String hashPassword = System.Text.Encoding.ASCII.GetString(data);
-
-            // SQL request
-            cmd.CommandText = $"USE CardGame; SELECT Email, PasswordHash FROM users WHERE Email LIKE '{UserLoginEmail}' AND PasswordHash LIKE '{hashPassword}'";
-
-            DbDataReader reader = cmd.ExecuteReader();
-
-            if (reader.HasRows == false)
+            if (connection.State == ConnectionState.Closed && connection != null)
             {
-                 return "Email or password is not valid !";
+                try
+                {
+                    //init of the connection    
+                    connection.Open();
+                }
+                catch (Exception exc)
+                {
+                    //we display the error message.
+                    MessageBox.Show(exc.Message);
+                }
+            }
+            
+            if(connection.State == ConnectionState.Open)
+            {
+                MySqlCommand cmd = connection.CreateCommand();
+
+                byte[] data = System.Text.Encoding.ASCII.GetBytes(UserLoginPassword);
+                data = new System.Security.Cryptography.SHA256Managed().ComputeHash(data);
+                String hashPassword = System.Text.Encoding.ASCII.GetString(data);
+
+                // SQL request
+                cmd.CommandText = $"USE CardGame; SELECT Email, PasswordHash FROM users WHERE Email LIKE '{UserLoginEmail}' AND PasswordHash LIKE '{hashPassword}'";
+
+                DbDataReader reader = cmd.ExecuteReader();
+
+                if (reader.HasRows == false)
+                {
+                    return "Email or password is not valid !";
+                }
+                else
+                {
+                    reader.Close();
+                    cmd.ExecuteNonQuery();
+                }     
             }
             else
             {
-                reader.Close();
-                cmd.ExecuteNonQuery();
+                return "Still unable to connect to database !";
             }
 
             return "";
