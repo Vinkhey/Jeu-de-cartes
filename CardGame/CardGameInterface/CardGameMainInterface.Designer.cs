@@ -30,11 +30,11 @@
         {
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tab2 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.BtnQuitGame = new System.Windows.Forms.Button();
+            this.BtnQuitGamePlayer1 = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.button8 = new System.Windows.Forms.Button();
+            this.SelectedCardDescriptionPlayer1 = new System.Windows.Forms.Button();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.button10 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -43,11 +43,11 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.tabControl2 = new System.Windows.Forms.TabControl();
+            this.TabP = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.button9 = new System.Windows.Forms.Button();
+            this.BtnQuitGamePlayer2 = new System.Windows.Forms.Button();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.button7 = new System.Windows.Forms.Button();
+            this.SelectedCardDescriptionPlayer2 = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -57,12 +57,12 @@
             this.button4 = new System.Windows.Forms.Button();
             this.progressBar2 = new System.Windows.Forms.ProgressBar();
             this.groupBox1.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            this.tab2.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.tabControl2.SuspendLayout();
+            this.TabP.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.tabPage5.SuspendLayout();
@@ -77,7 +77,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.tabControl1);
+            this.groupBox1.Controls.Add(this.tab2);
             this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.button1);
@@ -88,20 +88,20 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Joueur 1";
             // 
-            // tabControl1
+            // tab2
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage6);
-            this.tabControl1.Location = new System.Drawing.Point(708, 36);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(407, 240);
-            this.tabControl1.TabIndex = 3;
+            this.tab2.Controls.Add(this.tabPage1);
+            this.tab2.Controls.Add(this.tabPage2);
+            this.tab2.Controls.Add(this.tabPage6);
+            this.tab2.Location = new System.Drawing.Point(708, 36);
+            this.tab2.Name = "tab2";
+            this.tab2.SelectedIndex = 0;
+            this.tab2.Size = new System.Drawing.Size(407, 240);
+            this.tab2.TabIndex = 3;
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.BtnQuitGame);
+            this.tabPage1.Controls.Add(this.BtnQuitGamePlayer1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -110,19 +110,19 @@
             this.tabPage1.Text = "Menu";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // BtnQuitGame
+            // BtnQuitGamePlayer1
             // 
-            this.BtnQuitGame.Location = new System.Drawing.Point(292, 185);
-            this.BtnQuitGame.Name = "BtnQuitGame";
-            this.BtnQuitGame.Size = new System.Drawing.Size(101, 23);
-            this.BtnQuitGame.TabIndex = 4;
-            this.BtnQuitGame.Text = "Quitter la partie";
-            this.BtnQuitGame.UseVisualStyleBackColor = true;
-            this.BtnQuitGame.Click += new System.EventHandler(this.BtnQuitGame_Click);
+            this.BtnQuitGamePlayer1.Location = new System.Drawing.Point(292, 185);
+            this.BtnQuitGamePlayer1.Name = "BtnQuitGamePlayer1";
+            this.BtnQuitGamePlayer1.Size = new System.Drawing.Size(101, 23);
+            this.BtnQuitGamePlayer1.TabIndex = 4;
+            this.BtnQuitGamePlayer1.Text = "Quitter la partie";
+            this.BtnQuitGamePlayer1.UseVisualStyleBackColor = true;
+            this.BtnQuitGamePlayer1.Click += new System.EventHandler(this.BtnQuitGame_Click);
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.button8);
+            this.tabPage2.Controls.Add(this.SelectedCardDescriptionPlayer1);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -131,14 +131,14 @@
             this.tabPage2.Text = "Info Carte";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // button8
+            // SelectedCardDescriptionPlayer1
             // 
-            this.button8.BackColor = System.Drawing.Color.White;
-            this.button8.Location = new System.Drawing.Point(30, 28);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(110, 161);
-            this.button8.TabIndex = 1;
-            this.button8.UseVisualStyleBackColor = false;
+            this.SelectedCardDescriptionPlayer1.BackColor = System.Drawing.Color.White;
+            this.SelectedCardDescriptionPlayer1.Location = new System.Drawing.Point(30, 28);
+            this.SelectedCardDescriptionPlayer1.Name = "SelectedCardDescriptionPlayer1";
+            this.SelectedCardDescriptionPlayer1.Size = new System.Drawing.Size(110, 161);
+            this.SelectedCardDescriptionPlayer1.TabIndex = 1;
+            this.SelectedCardDescriptionPlayer1.UseVisualStyleBackColor = false;
             // 
             // tabPage6
             // 
@@ -214,7 +214,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.tabControl2);
+            this.groupBox2.Controls.Add(this.TabP);
             this.groupBox2.Controls.Add(this.button6);
             this.groupBox2.Controls.Add(this.button5);
             this.groupBox2.Controls.Add(this.button4);
@@ -225,20 +225,20 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Joueur 2";
             // 
-            // tabControl2
+            // TabP
             // 
-            this.tabControl2.Controls.Add(this.tabPage3);
-            this.tabControl2.Controls.Add(this.tabPage4);
-            this.tabControl2.Controls.Add(this.tabPage5);
-            this.tabControl2.Location = new System.Drawing.Point(708, 31);
-            this.tabControl2.Name = "tabControl2";
-            this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(407, 240);
-            this.tabControl2.TabIndex = 7;
+            this.TabP.Controls.Add(this.tabPage3);
+            this.TabP.Controls.Add(this.tabPage4);
+            this.TabP.Controls.Add(this.tabPage5);
+            this.TabP.Location = new System.Drawing.Point(708, 31);
+            this.TabP.Name = "TabP";
+            this.TabP.SelectedIndex = 0;
+            this.TabP.Size = new System.Drawing.Size(407, 240);
+            this.TabP.TabIndex = 7;
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.button9);
+            this.tabPage3.Controls.Add(this.BtnQuitGamePlayer2);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -247,18 +247,18 @@
             this.tabPage3.Text = "Menu";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // button9
+            // BtnQuitGamePlayer2
             // 
-            this.button9.Location = new System.Drawing.Point(292, 185);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(101, 23);
-            this.button9.TabIndex = 5;
-            this.button9.Text = "Quitter la partie";
-            this.button9.UseVisualStyleBackColor = true;
+            this.BtnQuitGamePlayer2.Location = new System.Drawing.Point(292, 185);
+            this.BtnQuitGamePlayer2.Name = "BtnQuitGamePlayer2";
+            this.BtnQuitGamePlayer2.Size = new System.Drawing.Size(101, 23);
+            this.BtnQuitGamePlayer2.TabIndex = 5;
+            this.BtnQuitGamePlayer2.Text = "Quitter la partie";
+            this.BtnQuitGamePlayer2.UseVisualStyleBackColor = true;
             // 
             // tabPage4
             // 
-            this.tabPage4.Controls.Add(this.button7);
+            this.tabPage4.Controls.Add(this.SelectedCardDescriptionPlayer2);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
@@ -267,15 +267,15 @@
             this.tabPage4.Text = "Info carte";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // button7
+            // SelectedCardDescriptionPlayer2
             // 
-            this.button7.BackColor = System.Drawing.Color.White;
-            this.button7.ForeColor = System.Drawing.Color.Transparent;
-            this.button7.Location = new System.Drawing.Point(30, 24);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(110, 161);
-            this.button7.TabIndex = 0;
-            this.button7.UseVisualStyleBackColor = false;
+            this.SelectedCardDescriptionPlayer2.BackColor = System.Drawing.Color.White;
+            this.SelectedCardDescriptionPlayer2.ForeColor = System.Drawing.Color.Transparent;
+            this.SelectedCardDescriptionPlayer2.Location = new System.Drawing.Point(30, 24);
+            this.SelectedCardDescriptionPlayer2.Name = "SelectedCardDescriptionPlayer2";
+            this.SelectedCardDescriptionPlayer2.Size = new System.Drawing.Size(110, 161);
+            this.SelectedCardDescriptionPlayer2.TabIndex = 0;
+            this.SelectedCardDescriptionPlayer2.UseVisualStyleBackColor = false;
             // 
             // tabPage5
             // 
@@ -372,13 +372,13 @@
             this.Text = "CardGameInterface";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CardGameMainInterface_FormClosing);
             this.groupBox1.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
+            this.tab2.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage6.ResumeLayout(false);
             this.tabPage6.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            this.tabControl2.ResumeLayout(false);
+            this.TabP.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             this.tabPage5.ResumeLayout(false);
@@ -392,23 +392,23 @@
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tab2;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TabControl tabControl2;
+        private System.Windows.Forms.TabControl TabP;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.ProgressBar progressBar2;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button BtnQuitGame;
-        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button SelectedCardDescriptionPlayer1;
+        private System.Windows.Forms.Button SelectedCardDescriptionPlayer2;
+        private System.Windows.Forms.Button BtnQuitGamePlayer1;
+        private System.Windows.Forms.Button BtnQuitGamePlayer2;
         private System.Windows.Forms.TabPage tabPage6;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Label label2;
