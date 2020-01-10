@@ -85,7 +85,7 @@
             this.Controls.Add(this.LblInscrit);
             this.Controls.Add(this.LblEmailRegister);
             this.Controls.Add(this.LblRegister);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "RegisterCorrect";
             this.Text = "RegisterCorrect";
             this.Load += new System.EventHandler(this.RegisterCorrect_Load_1);

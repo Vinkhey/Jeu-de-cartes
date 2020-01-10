@@ -148,7 +148,7 @@
             this.Controls.Add(this.LblSignUp);
             this.Controls.Add(this.LblPswLogin);
             this.Controls.Add(this.LblEmailLogin);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Login";

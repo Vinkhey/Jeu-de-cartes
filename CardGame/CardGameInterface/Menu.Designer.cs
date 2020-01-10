@@ -126,6 +126,7 @@
             this.Controls.Add(this.BtnOptions);
             this.Controls.Add(this.BtnPlay);
             this.Controls.Add(this.LblMenu);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Menu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Menu";

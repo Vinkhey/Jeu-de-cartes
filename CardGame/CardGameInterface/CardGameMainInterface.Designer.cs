@@ -366,7 +366,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.progressBar1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "CardGameMainInterface";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "CardGameInterface";
