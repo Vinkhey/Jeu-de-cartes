@@ -43,7 +43,7 @@ namespace CardGameManagement
             MySqlCommand cmd = connection.CreateCommand();
 
             // SQL request
-            cmd.CommandText = "CREATE DATABASE IF NOT EXISTS CardGame; USE CardGame; CREATE TABLE CardGame.Users(idUsers INT, Email VARCHAR(100), PasswordHash VARCHAR(500)); ALTER TABLE Users ADD CONSTRAINT AUTO_INCREMENT PRIMARY KEY(idUsers); ALTER TABLE `users` CHANGE COLUMN `idUsers` `idUsers` INT(11) NOT NULL AUTO_INCREMENT FIRST; ";
+            cmd.CommandText = "CREATE DATABASE IF NOT EXISTS CardGame; CREATE USER IF NOT EXISTS 'AdminCardGame'@'localhost' IDENTIFIED BY 'Pa$$w0rd'; USE CardGame; CREATE TABLE CardGame.Users(idUsers INT, Email VARCHAR(100), PasswordHash VARCHAR(500)); ALTER TABLE Users ADD CONSTRAINT AUTO_INCREMENT PRIMARY KEY(idUsers); ALTER TABLE `users` CHANGE COLUMN `idUsers` `idUsers` INT(11) NOT NULL AUTO_INCREMENT FIRST; GRANT ALL PRIVILEGES ON CardGame.* TO 'AdminCardGame'@'localhost';";
 
             // Execute the SQL command
             cmd.ExecuteNonQuery();
