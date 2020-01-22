@@ -89,7 +89,7 @@ namespace CardGameInterface
                 UserPreferences.Add(obj[1]);
                 file.Close();
             }
-        } 
+        }
 
         private void BtnClose_Click(object sender, EventArgs e)
         {
@@ -109,11 +109,6 @@ namespace CardGameInterface
 
             Menu MainMenu = new Menu();
             MainMenu.ShowDialog();
-        }
-
-        private void CardGameMainInterface_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
