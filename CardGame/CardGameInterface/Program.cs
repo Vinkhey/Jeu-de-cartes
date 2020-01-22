@@ -35,6 +35,7 @@ namespace CardGameInterface
                 {
                     //init of the connection    
                     connDB.CreateDatabase();
+                    connDB.UploadImages();
                     connDB.CloseConnection();
                 }
                 catch (Exception exc)
