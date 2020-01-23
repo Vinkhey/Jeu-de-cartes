@@ -17,6 +17,7 @@ namespace CardGameManagement
     public class DbConnector
     {
         private MySqlConnection connection;
+        public string IdUserConnected;
 
         public DbConnector()
         {
@@ -25,9 +26,8 @@ namespace CardGameManagement
 
         private void InitConnection()
         {
-
             // Creation of the connection string : where, who
-            string connectionString = "SERVER=127.0.0.1; UID=root; PASSWORD=Pa$$w0rd";
+            string connectionString = "SERVER=127.0.0.1; UID=root; PASSWORD=Pa$$w0rd;";
             connection = new MySqlConnection(connectionString);        
         }
 
@@ -303,7 +303,7 @@ namespace CardGameManagement
                 String hashPassword = System.Text.Encoding.ASCII.GetString(data);
 
                 // SQL request
-                cmd.CommandText = $"USE CardGame; SELECT Email, PasswordHash FROM users WHERE Email LIKE '{UserLoginEmail}' AND PasswordHash LIKE '{hashPassword}'";
+                cmd.CommandText = $"USE CardGame; SELECT IdUsers, Email, PasswordHash FROM users WHERE Email LIKE '{UserLoginEmail}' AND PasswordHash LIKE '{hashPassword}'";
 
                 DbDataReader reader = cmd.ExecuteReader();
 
@@ -313,6 +313,11 @@ namespace CardGameManagement
                 }
                 else
                 {
+                    if (reader.Read())
+                    {
+                        IdUserConnected = reader.GetString(0);
+                    }
+
                     reader.Close();
                     cmd.ExecuteNonQuery();
                 }     
@@ -325,16 +330,114 @@ namespace CardGameManagement
             return "";
         }
 
-        public void PullCard(int RandomCardNumber)
+        public MemoryStream PullCard(int RandomCardNumber)
         {
+            if (connection.State == ConnectionState.Closed && connection != null)
+            {
+                try
+                {
+                    //init of the connection    
+                    connection.Open();
+                }
+                catch (Exception exc)
+                {
+                    //we display the error message.
+                    MessageBox.Show(exc.Message);
+                }
+            }
+
+            
+
+            MemoryStream ms1 = new MemoryStream();
+
+            string WorkingDirectory = Directory.GetCurrentDirectory();
             MySqlCommand cmd = connection.CreateCommand();
 
             // SQL request
-            cmd.CommandText = $"SELECT CardPicture FROM Cards WHERE idCards LIKE({RandomCardNumber});";
+            cmd.CommandText = $"USE CardGame; SELECT CardPicture FROM Cards WHERE idCards LIKE(2);";
 
             DbDataReader reader = cmd.ExecuteReader();
 
-            
+            if (reader.HasRows)
+            {
+                if (reader.Read())
+                {
+                    byte[] b = new byte[0];
+                    b = (Byte[])(reader[0]);
+                    MemoryStream ms = new MemoryStream(b);
+                    connection.Close();
+                    return ms;
+                }
+
+                connection.Close();
+                reader.Close();
+            }
+
+            reader.Close();
+            connection.Close();
+
+            return ms1;
+        }
+
+        public void InsertCardUsed(int RandomCardNumber)
+        {
+            if (connection.State == ConnectionState.Closed && connection != null)
+            {
+                try
+                {
+                    //init of the connection    
+                    connection.Open();
+                }
+                catch (Exception exc)
+                {
+                    //we display the error message.
+                    MessageBox.Show(exc.Message);
+                }
+            }
+
+            MySqlCommand cmd = connection.CreateCommand();
+
+            cmd.CommandText = $@"INSERT INTO `cardgame`.`users_cards` (`IdCards`, `IdUsers`, `Game`) VALUES ('2', '1', '1');";
+
+            DbDataReader reader = cmd.ExecuteReader();
+
+            connection.Close();
+        }
+
+        public void CheckCardAlreadyPulled(int RandomCardNumber)
+        {
+            if (connection.State == ConnectionState.Closed && connection != null)
+            {
+                try
+                {
+                    //init of the connection    
+                    connection.Open();
+                }
+                catch (Exception exc)
+                {
+                    //we display the error message.
+                    MessageBox.Show(exc.Message);
+                }
+            }
+
+            MySqlCommand cmd = connection.CreateCommand();
+
+            cmd.CommandText = $@"USE CardGame; SELECT idCards, idUsers FROM users_cards WHERE idUsers LIKE(2) AND idCards LIKE(2);";
+
+            DbDataReader reader = cmd.ExecuteReader();
+
+            if(!reader.HasRows)
+            {
+                InsertCardUsed(RandomCardNumber);
+            }
+            else
+            {
+                Random Card = new Random();
+                RandomCardNumber = Card.Next(1, 17);
+                PullCard(RandomCardNumber);
+            }
+
+            connection.Close();
         }
     }
 }

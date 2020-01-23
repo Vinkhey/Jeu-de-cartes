@@ -118,10 +118,20 @@ namespace CardGameInterface
             int RandomCardNumber = Card.Next(1, 17);
 
             DbConnector DBconnection = new DbConnector();
+            MemoryStream test = DBconnection.PullCard(RandomCardNumber);
+            DBconnection.CheckCardAlreadyPulled(RandomCardNumber);
+            button2.Image = Image.FromStream(test);
+        }
 
-            string zFile = @"C:\CardPicture";
-            StreamReader reader = new StreamReader(zFile);
-            button7.Image = Image.FromStream(reader.BaseStream);
+        private void BtnNewCardPlayer2_Click(object sender, EventArgs e)
+        {
+            Random Card = new Random();
+            int RandomCardNumber = Card.Next(1, 17);
+
+            DbConnector DBconnection = new DbConnector();
+            MemoryStream test = DBconnection.PullCard(RandomCardNumber);
+
+            button5.Image = Image.FromStream(test);
         }
     }
 }
