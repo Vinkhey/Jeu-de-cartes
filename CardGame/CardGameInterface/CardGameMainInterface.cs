@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using CardGameManagement;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
@@ -110,5 +111,18 @@ namespace CardGameInterface
             Menu MainMenu = new Menu();
             MainMenu.ShowDialog();
         }
+
+        private void BtnNewCardPlayer1_Click(object sender, EventArgs e)
+        {
+            Random Card = new Random();
+            int RandomCardNumber = Card.Next(1, 17);
+
+            DbConnector DBconnection = new DbConnector();
+
+            string zFile = @"C:\CardPicture";
+            StreamReader reader = new StreamReader(zFile);
+            button7.Image = Image.FromStream(reader.BaseStream);
+        }
     }
 }
+    

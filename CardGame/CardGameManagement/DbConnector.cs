@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
@@ -46,11 +47,10 @@ namespace CardGameManagement
             MySqlCommand cmd = connection.CreateCommand();
 
             // SQL request
-            cmd.CommandText = "CREATE DATABASE IF NOT EXISTS CardGame; CREATE USER IF NOT EXISTS 'AdminCardGame'@'localhost' IDENTIFIED BY 'Pa$$w0rd'; USE CardGame; CREATE TABLE CardGame.Users(idUsers INT, Email VARCHAR(100), PasswordHash VARCHAR(500)); ALTER TABLE Users ADD CONSTRAINT AUTO_INCREMENT PRIMARY KEY(idUsers); ALTER TABLE `users` CHANGE COLUMN `idUsers` `idUsers` INT(11) NOT NULL AUTO_INCREMENT FIRST; GRANT ALL PRIVILEGES ON CardGame.* TO 'AdminCardGame'@'localhost'; CREATE TABLE CardGame.Cards(IdCards INT, CardName VARCHAR(20), HealthPoints INT, AttackValue INT, CardPicture BLOB); ALTER TABLE Cards ADD CONSTRAINT AUTO_INCREMENT PRIMARY KEY(IdCards); ALTER TABLE Cards CHANGE COLUMN IdCards IdCards INT(11) NOT NULL AUTO_INCREMENT FIRST; CREATE TABLE CardGame.Users_Cards(IdCards INT(11), IdUsers INT(11)); ALTER TABLE Users_Cards ADD FOREIGN KEY (IdUsers) REFERENCES Users(IdUsers); ALTER TABLE Users_Cards ADD FOREIGN KEY(IdCards) REFERENCES Cards(IdCards)";
+            cmd.CommandText = "CREATE DATABASE IF NOT EXISTS CardGame; CREATE USER IF NOT EXISTS 'AdminCardGame'@'localhost' IDENTIFIED BY 'Pa$$w0rd'; USE CardGame; CREATE TABLE CardGame.Users(idUsers INT, Email VARCHAR(100), PasswordHash VARCHAR(500)); ALTER TABLE Users ADD CONSTRAINT AUTO_INCREMENT PRIMARY KEY(idUsers); ALTER TABLE `users` CHANGE COLUMN `idUsers` `idUsers` INT(11) NOT NULL AUTO_INCREMENT FIRST; GRANT ALL PRIVILEGES ON CardGame.* TO 'AdminCardGame'@'localhost'; CREATE TABLE CardGame.Cards(IdCards INT, CardName VARCHAR(20), HealthPoints INT, AttackValue INT, CardPicture BLOB); ALTER TABLE Cards ADD CONSTRAINT AUTO_INCREMENT PRIMARY KEY(IdCards); ALTER TABLE Cards CHANGE COLUMN IdCards IdCards INT(11) NOT NULL AUTO_INCREMENT FIRST; CREATE TABLE CardGame.Users_Cards(IdCards INT(11), IdUsers INT(11), Game INT(11)); ALTER TABLE Users_Cards ADD FOREIGN KEY (IdUsers) REFERENCES Users(IdUsers); ALTER TABLE Users_Cards ADD FOREIGN KEY(IdCards) REFERENCES Cards(IdCards)";
 
             // Execute the SQL command
             cmd.ExecuteNonQuery();
-            UploadImages();
         }
 
         public void UploadImages()
@@ -104,16 +104,16 @@ namespace CardGameManagement
 
             MySqlCommand cmd6 = connection.CreateCommand();
 
-            byte[] imag6 = File.ReadAllBytes($@"{WorkingDirectory}\images\Droïde_de_combat_B1.png");
+            byte[] imag6 = File.ReadAllBytes($@"{WorkingDirectory}\images\dro--de_de_combat_b1.png");
 
             cmd6.CommandText = "INSERT INTO Cards(CardName, HealthPoints, AttackValue, CardPicture) VALUES('Droïde', 20, 20, @Image)";
-            cmd6.Parameters.AddWithValue("@Image", imag6);
+            cmd6.Parameters.AddWithValue("@Image",  imag6);
 
             cmd6.ExecuteNonQuery();
 
             MySqlCommand cmd7 = connection.CreateCommand();
 
-            byte[] imag7 = File.ReadAllBytes($@"{WorkingDirectory}\images\ddhkouw-8b890283-d536-4552-8a2a-df88f1b6dd35.png");
+            byte[] imag7 = File.ReadAllBytes($@"{WorkingDirectory}\images\ddhkouw-8b890283-d536-4552-8a2.png");
 
             cmd7.CommandText = "INSERT INTO Cards(CardName, HealthPoints, AttackValue, CardPicture) VALUES('Kylo ren', 60, 60, @Image)";
             cmd7.Parameters.AddWithValue("@Image", imag7);
@@ -122,7 +122,7 @@ namespace CardGameManagement
 
             MySqlCommand cmd8 = connection.CreateCommand();
 
-            byte[] imag8 = File.ReadAllBytes($@"{WorkingDirectory}\images\Commandodroid_detail.png");
+            byte[] imag8 = File.ReadAllBytes($@"{WorkingDirectory}\images\commandodroid_detail.png");
 
             cmd8.CommandText = "INSERT INTO Cards(CardName, HealthPoints, AttackValue, CardPicture) VALUES('Droïde commando', 35, 45, @Image)";
             cmd8.Parameters.AddWithValue("@Image", imag8);
@@ -131,7 +131,7 @@ namespace CardGameManagement
 
             MySqlCommand cmd9 = connection.CreateCommand();
 
-            byte[] imag9 = File.ReadAllBytes($@"{WorkingDirectory}\images\C3PO.png");
+            byte[] imag9 = File.ReadAllBytes($@"{WorkingDirectory}\images\c3po.png");
 
             cmd9.CommandText = "INSERT INTO Cards(CardName, HealthPoints, AttackValue, CardPicture) VALUES('C3PO', 5, 5, @Image)";
             cmd9.Parameters.AddWithValue("@Image", imag9);
@@ -149,7 +149,7 @@ namespace CardGameManagement
 
             MySqlCommand cmd11 = connection.CreateCommand();
 
-            byte[] imag11 = File.ReadAllBytes($@"{WorkingDirectory}\images\anakin-skywalker-luke-skywalker-leia-organa-stormtrooper-darth-vader.jpg");
+            byte[] imag11 = File.ReadAllBytes($@"{WorkingDirectory}\images\anakin-skywalker-luke-skywalke.jpg");
 
             cmd11.CommandText = "INSERT INTO Cards(CardName, HealthPoints, AttackValue, CardPicture) VALUES('Darth vador', 80, 80, @Image)";
             cmd11.Parameters.AddWithValue("@Image", imag11);
@@ -158,7 +158,7 @@ namespace CardGameManagement
 
             MySqlCommand cmd12 = connection.CreateCommand();
 
-            byte[] imag12 = File.ReadAllBytes($@"{WorkingDirectory}\images\6838079_preview.png");
+            byte[] imag12 = File.ReadAllBytes($@"{WorkingDirectory}\images\6838079_preview-1.png");
 
             cmd12.CommandText = "INSERT INTO Cards(CardName, HealthPoints, AttackValue, CardPicture) VALUES('Anakin', 90, 70, @Image)";
             cmd12.Parameters.AddWithValue("@Image", imag12);
@@ -176,7 +176,7 @@ namespace CardGameManagement
 
             MySqlCommand cmd14 = connection.CreateCommand();
 
-            byte[] imag14 = File.ReadAllBytes($@"{WorkingDirectory}\images\5462702-darth-sidious-png-darth-sidious-transparent-png-259x479-free-dar....jpg");
+            byte[] imag14 = File.ReadAllBytes($@"{WorkingDirectory}\images\5462702-darth-sidious-png-dart.jpg");
 
             cmd14.CommandText = "INSERT INTO Cards(CardName, HealthPoints, AttackValue, CardPicture) VALUES('Darth sidious', 100, 80, @Image)";
             cmd14.Parameters.AddWithValue("@Image", imag14);
@@ -185,7 +185,7 @@ namespace CardGameManagement
 
             MySqlCommand cmd15 = connection.CreateCommand();
 
-            byte[] imag15 = File.ReadAllBytes($@"{WorkingDirectory}\images\4109c25126f333fe8f0b0cf23777f43f.png");
+            byte[] imag15 = File.ReadAllBytes($@"{WorkingDirectory}\images\4109c25126f333fe8f0b0cf23777f4.png");
 
             cmd15.CommandText = "INSERT INTO Cards(CardName, HealthPoints, AttackValue, CardPicture) VALUES('Darth nihilus', 120, 90, @Image)";
             cmd15.Parameters.AddWithValue("@Image", imag15);
@@ -194,7 +194,7 @@ namespace CardGameManagement
 
             MySqlCommand cmd16 = connection.CreateCommand();
 
-            byte[] imag16 = File.ReadAllBytes($@"{WorkingDirectory}\images\131-1317620_darth-maul-png-transparent-png.png");
+            byte[] imag16 = File.ReadAllBytes($@"{WorkingDirectory}\images\131-1317620_darth-maul-png-tra.png");
 
             cmd16.CommandText = "INSERT INTO Cards(CardName, HealthPoints, AttackValue, CardPicture) VALUES('Darth maul', 70, 70, @Image)";
             cmd16.Parameters.AddWithValue("@Image", imag16);
@@ -203,7 +203,7 @@ namespace CardGameManagement
 
             MySqlCommand cmd17 = connection.CreateCommand();
 
-            byte[] imag17 = File.ReadAllBytes($@"{WorkingDirectory}\images\61hhiMpND7L._AC_SY550_.jpg");
+            byte[] imag17 = File.ReadAllBytes($@"{WorkingDirectory}\images\61hhimpnd7l-_ac_sy550_.jpg");
 
             cmd17.CommandText = "INSERT INTO Cards(CardName, HealthPoints, AttackValue, CardPicture) VALUES('Clone trooper', 30, 30, @Image)";
             cmd17.Parameters.AddWithValue("@Image", imag17);
@@ -323,6 +323,18 @@ namespace CardGameManagement
             }
 
             return "";
+        }
+
+        public void PullCard(int RandomCardNumber)
+        {
+            MySqlCommand cmd = connection.CreateCommand();
+
+            // SQL request
+            cmd.CommandText = $"SELECT CardPicture FROM Cards WHERE idCards LIKE({RandomCardNumber});";
+
+            DbDataReader reader = cmd.ExecuteReader();
+
+            
         }
     }
 }

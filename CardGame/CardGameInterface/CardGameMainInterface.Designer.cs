@@ -29,22 +29,22 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.BtnNewCardPlayer1 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button7 = new System.Windows.Forms.Button();
+            this.BtnNewCardPlayer2 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button8);
+            this.groupBox1.Controls.Add(this.BtnNewCardPlayer1);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.button2);
@@ -54,6 +54,25 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Joueur 1";
+            // 
+            // BtnNewCardPlayer1
+            // 
+            this.BtnNewCardPlayer1.Location = new System.Drawing.Point(850, 242);
+            this.BtnNewCardPlayer1.Name = "BtnNewCardPlayer1";
+            this.BtnNewCardPlayer1.Size = new System.Drawing.Size(130, 34);
+            this.BtnNewCardPlayer1.TabIndex = 9;
+            this.BtnNewCardPlayer1.Text = "Tirer une carte";
+            this.BtnNewCardPlayer1.UseVisualStyleBackColor = true;
+            this.BtnNewCardPlayer1.Click += new System.EventHandler(this.BtnNewCardPlayer1_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(1003, 242);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(130, 34);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Quitter la partie";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
@@ -77,7 +96,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.button7);
-            this.groupBox2.Controls.Add(this.button4);
+            this.groupBox2.Controls.Add(this.BtnNewCardPlayer2);
             this.groupBox2.Controls.Add(this.button6);
             this.groupBox2.Controls.Add(this.button5);
             this.groupBox2.Location = new System.Drawing.Point(25, 12);
@@ -86,6 +105,24 @@
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Joueur 2";
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(1003, 245);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(130, 34);
+            this.button7.TabIndex = 8;
+            this.button7.Text = "Quitter la partie";
+            this.button7.UseVisualStyleBackColor = true;
+            // 
+            // BtnNewCardPlayer2
+            // 
+            this.BtnNewCardPlayer2.Location = new System.Drawing.Point(850, 245);
+            this.BtnNewCardPlayer2.Name = "BtnNewCardPlayer2";
+            this.BtnNewCardPlayer2.Size = new System.Drawing.Size(130, 34);
+            this.BtnNewCardPlayer2.TabIndex = 8;
+            this.BtnNewCardPlayer2.Text = "Tirer une carte";
+            this.BtnNewCardPlayer2.UseVisualStyleBackColor = true;
             // 
             // button6
             // 
@@ -104,42 +141,6 @@
             this.button5.Size = new System.Drawing.Size(179, 240);
             this.button5.TabIndex = 5;
             this.button5.UseVisualStyleBackColor = false;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(1003, 242);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(130, 34);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Quitter la partie";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(850, 245);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(130, 34);
-            this.button4.TabIndex = 8;
-            this.button4.Text = "Tirer une carte";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(1003, 245);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(130, 34);
-            this.button7.TabIndex = 8;
-            this.button7.Text = "Quitter la partie";
-            this.button7.UseVisualStyleBackColor = true;
-            // 
-            // button8
-            // 
-            this.button8.Location = new System.Drawing.Point(850, 242);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(130, 34);
-            this.button8.TabIndex = 9;
-            this.button8.Text = "Tirer une carte";
-            this.button8.UseVisualStyleBackColor = true;
             // 
             // CardGameMainInterface
             // 
@@ -167,9 +168,9 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button BtnNewCardPlayer1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button BtnNewCardPlayer2;
     }
 }
