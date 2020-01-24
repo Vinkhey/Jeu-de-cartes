@@ -45,10 +45,12 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
             this.groupBox1.Controls.Add(this.BtnNewCardPlayer1);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.ForeColor = System.Drawing.Color.White;
             this.groupBox1.Location = new System.Drawing.Point(25, 420);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1154, 299);
@@ -58,6 +60,7 @@
             // 
             // BtnNewCardPlayer1
             // 
+            this.BtnNewCardPlayer1.ForeColor = System.Drawing.Color.Black;
             this.BtnNewCardPlayer1.Location = new System.Drawing.Point(850, 242);
             this.BtnNewCardPlayer1.Name = "BtnNewCardPlayer1";
             this.BtnNewCardPlayer1.Size = new System.Drawing.Size(130, 34);
@@ -68,6 +71,7 @@
             // 
             // button1
             // 
+            this.button1.ForeColor = System.Drawing.Color.Black;
             this.button1.Location = new System.Drawing.Point(1003, 242);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(130, 34);
@@ -96,10 +100,12 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.BackColor = System.Drawing.Color.Transparent;
             this.groupBox2.Controls.Add(this.button7);
             this.groupBox2.Controls.Add(this.BtnNewCardPlayer2);
             this.groupBox2.Controls.Add(this.button6);
             this.groupBox2.Controls.Add(this.button5);
+            this.groupBox2.ForeColor = System.Drawing.Color.White;
             this.groupBox2.Location = new System.Drawing.Point(25, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(1154, 299);
@@ -109,6 +115,7 @@
             // 
             // button7
             // 
+            this.button7.ForeColor = System.Drawing.Color.Black;
             this.button7.Location = new System.Drawing.Point(1003, 245);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(130, 34);
@@ -118,6 +125,7 @@
             // 
             // BtnNewCardPlayer2
             // 
+            this.BtnNewCardPlayer2.ForeColor = System.Drawing.Color.Black;
             this.BtnNewCardPlayer2.Location = new System.Drawing.Point(850, 245);
             this.BtnNewCardPlayer2.Name = "BtnNewCardPlayer2";
             this.BtnNewCardPlayer2.Size = new System.Drawing.Size(130, 34);
@@ -150,6 +158,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1215, 757);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);

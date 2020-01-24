@@ -15,11 +15,14 @@ namespace CardGameInterface
 {
     public partial class Menu : Form
     {
+        System.Media.SoundPlayer player = new System.Media.SoundPlayer();
         private List<string> UserPreferences;
         private string WorkingDirectory;
 
         public Menu()
         {
+            player.SoundLocation = "musique.wav";
+            player.Play();
             InitializeComponent();
 
             WorkingDirectory = Directory.GetCurrentDirectory();
@@ -118,6 +121,16 @@ namespace CardGameInterface
         private void Menu_FormClosing(object sender, FormClosingEventArgs e)
         {
             ToJson();
+        }
+
+        private void Menu_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LblMenu_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
