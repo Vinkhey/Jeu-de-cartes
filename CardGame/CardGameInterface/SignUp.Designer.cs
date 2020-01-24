@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SignUp));
             this.LblSignUp = new System.Windows.Forms.Label();
             this.LblEmailSignUp = new System.Windows.Forms.Label();
             this.LblPswSignUp = new System.Windows.Forms.Label();
@@ -45,18 +46,22 @@
             // LblSignUp
             // 
             this.LblSignUp.AutoSize = true;
-            this.LblSignUp.Font = new System.Drawing.Font("Mistral", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblSignUp.Location = new System.Drawing.Point(272, 22);
+            this.LblSignUp.BackColor = System.Drawing.Color.Transparent;
+            this.LblSignUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblSignUp.ForeColor = System.Drawing.Color.White;
+            this.LblSignUp.Location = new System.Drawing.Point(242, 22);
             this.LblSignUp.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.LblSignUp.Name = "LblSignUp";
-            this.LblSignUp.Size = new System.Drawing.Size(190, 76);
+            this.LblSignUp.Size = new System.Drawing.Size(260, 73);
             this.LblSignUp.TabIndex = 0;
             this.LblSignUp.Text = "Sign Up";
             // 
             // LblEmailSignUp
             // 
             this.LblEmailSignUp.AutoSize = true;
+            this.LblEmailSignUp.BackColor = System.Drawing.Color.Transparent;
             this.LblEmailSignUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblEmailSignUp.ForeColor = System.Drawing.Color.White;
             this.LblEmailSignUp.Location = new System.Drawing.Point(72, 131);
             this.LblEmailSignUp.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.LblEmailSignUp.Name = "LblEmailSignUp";
@@ -67,7 +72,9 @@
             // LblPswSignUp
             // 
             this.LblPswSignUp.AutoSize = true;
+            this.LblPswSignUp.BackColor = System.Drawing.Color.Transparent;
             this.LblPswSignUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblPswSignUp.ForeColor = System.Drawing.Color.White;
             this.LblPswSignUp.Location = new System.Drawing.Point(109, 196);
             this.LblPswSignUp.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.LblPswSignUp.Name = "LblPswSignUp";
@@ -78,7 +85,9 @@
             // LblPswVerifSignUp
             // 
             this.LblPswVerifSignUp.AutoSize = true;
+            this.LblPswVerifSignUp.BackColor = System.Drawing.Color.Transparent;
             this.LblPswVerifSignUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblPswVerifSignUp.ForeColor = System.Drawing.Color.White;
             this.LblPswVerifSignUp.Location = new System.Drawing.Point(15, 256);
             this.LblPswVerifSignUp.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.LblPswVerifSignUp.Name = "LblPswVerifSignUp";
@@ -166,6 +175,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(669, 449);
             this.Controls.Add(this.BtnSignUpToLogin);
             this.Controls.Add(this.LblPswverifErrorSignUp);
