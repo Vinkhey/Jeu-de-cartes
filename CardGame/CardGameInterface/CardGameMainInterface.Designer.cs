@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CardGameMainInterface));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.BtnNewCardPlayer1 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -77,6 +78,7 @@
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.White;
+            this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
             this.button3.Location = new System.Drawing.Point(638, 36);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(179, 240);
@@ -127,6 +129,7 @@
             // button6
             // 
             this.button6.BackColor = System.Drawing.Color.White;
+            this.button6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button6.BackgroundImage")));
             this.button6.Location = new System.Drawing.Point(638, 31);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(179, 240);
