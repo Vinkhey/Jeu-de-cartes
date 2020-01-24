@@ -354,7 +354,7 @@ namespace CardGameManagement
             MySqlCommand cmd = connection.CreateCommand();
 
             // SQL request
-            cmd.CommandText = $"USE CardGame; SELECT CardPicture FROM Cards WHERE idCards LIKE(2);";
+            cmd.CommandText = $"USE CardGame; SELECT CardPicture FROM Cards WHERE idCards LIKE({RandomCardNumber});";
 
             DbDataReader reader = cmd.ExecuteReader();
 
