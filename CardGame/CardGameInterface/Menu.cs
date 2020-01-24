@@ -21,7 +21,9 @@ namespace CardGameInterface
 
         public Menu()
         {
-            player.SoundLocation = "musique.wav";
+            string WorkingDirectory = Directory.GetCurrentDirectory();
+            string ProjectDirectory = Directory.GetParent(WorkingDirectory).Parent.FullName;
+            player.SoundLocation = $@"{ProjectDirectory}\musique.wav";
             player.Play();
             InitializeComponent();
 
