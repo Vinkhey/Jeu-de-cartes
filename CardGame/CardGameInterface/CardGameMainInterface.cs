@@ -119,7 +119,7 @@ namespace CardGameInterface
 
             DbConnector DBconnection = new DbConnector();
             MemoryStream test = DBconnection.PullCard(RandomCardNumber);
-            //DBconnection.CheckCardAlreadyPulled(RandomCardNumber);
+            DBconnection.CheckCardAlreadyPulled(RandomCardNumber);
             button2.Image = Image.FromStream(test);
         }
 
