@@ -120,6 +120,10 @@ namespace CardGameInterface
             DbConnector DBconnection = new DbConnector();
             MemoryStream test = DBconnection.PullCard(RandomCardNumber);
             DBconnection.CheckCardAlreadyPulled(RandomCardNumber);
+            string HealpointsP1 = DBconnection.GetCardHealthPointsPlayer1(RandomCardNumber);
+            string AttackvalueP1 = DBconnection.GetCardAttackValuePlayer1(RandomCardNumber);
+            label3.Text = HealpointsP1;
+            label4.Text = AttackvalueP1;
             button2.Image = Image.FromStream(test);
         }
 
@@ -130,8 +134,48 @@ namespace CardGameInterface
 
             DbConnector DBconnection = new DbConnector();
             MemoryStream test = DBconnection.PullCard(RandomCardNumber);
-
+            DBconnection.CheckCardAlreadyPulled(RandomCardNumber);
+            string HealpointsP2 = DBconnection.GetCardHealthPointsPlayer2(RandomCardNumber);
+            string AttackvalueP2 = DBconnection.GetCardAttackValuePlayer2(RandomCardNumber);
+            label1.Text = HealpointsP2;
+            label2.Text = AttackvalueP2;
             button5.Image = Image.FromStream(test);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (label1.Text != "" || label2.Text != "")
+            {
+                int HealpointsP2Int = int.Parse(label1.Text) - int.Parse(label3.Text);
+
+                if (HealpointsP2Int <= 0)
+                {
+                    label1.Text = "0";
+                    label2.Text = "0";
+                    button5.Image = null;
+                }
+
+                label1.Text = HealpointsP2Int.ToString();
+            }
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            if (label3.Text != "" || label4.Text != "")
+            {
+                int HealpointsP1Int = int.Parse(label4.Text) - int.Parse(label2.Text);
+
+                if (HealpointsP1Int <= 0)
+                {
+                    label3.Text = "0";
+                    label4.Text = "0";
+                    button2.Image = null;
+                }
+                else
+                {
+                    label4.Text = HealpointsP1Int.ToString();
+                }
+            }
         }
     }
 }

@@ -17,7 +17,6 @@ namespace CardGameManagement
     public class DbConnector
     {
         private MySqlConnection connection;
-        public string IdUserConnected;
 
         public DbConnector()
         {
@@ -56,8 +55,7 @@ namespace CardGameManagement
         public void UploadImages()
         {
             string WorkingDirectory = Directory.GetCurrentDirectory();
-            string ProjectDirectory = Directory.GetParent(WorkingDirectory).Parent.FullName;
-           
+            string ProjectDirectory = Directory.GetParent(WorkingDirectory).Parent.FullName;     
 
             MySqlCommand cmd = connection.CreateCommand();
 
@@ -282,6 +280,8 @@ namespace CardGameManagement
 
         public string UserLogin(string UserLoginEmail, string UserLoginPassword)
         {
+            string WorkingDirectory = Directory.GetCurrentDirectory();
+
             if (connection.State == ConnectionState.Closed && connection != null)
             {
                 try
@@ -305,7 +305,7 @@ namespace CardGameManagement
                 String hashPassword = System.Text.Encoding.ASCII.GetString(data);
 
                 // SQL request
-                cmd.CommandText = $"USE CardGame; SELECT IdUsers, Email, PasswordHash FROM users WHERE Email LIKE '{UserLoginEmail}' AND PasswordHash LIKE '{hashPassword}'";
+                cmd.CommandText = $"USE CardGame; SELECT IdUsers, Email, PasswordHash FROM users WHERE IdUsers AND Email LIKE '{UserLoginEmail}' AND PasswordHash LIKE '{hashPassword}'";
 
                 DbDataReader reader = cmd.ExecuteReader();
 
@@ -317,7 +317,11 @@ namespace CardGameManagement
                 {
                     if (reader.Read())
                     {
-                        IdUserConnected = reader.GetString(0);
+                        using (StreamWriter file = File.CreateText($@"{WorkingDirectory}\UserConnected.txt"))
+                        {
+                            file.Write(reader.GetInt32(0));
+                            file.Close();
+                        }  
                     }
 
                     reader.Close();
@@ -381,23 +385,31 @@ namespace CardGameManagement
 
         public void InsertCardUsed(int RandomCardNumber)
         {
-            if (connection.State == ConnectionState.Closed && connection != null)
+            int IdUserConnected;
+            string WorkingDirectory = Directory.GetCurrentDirectory();
+
+            using (StreamReader file = File.OpenText($@"{WorkingDirectory}\UserConnected.txt"))
             {
-                try
-                {
-                    //init of the connection    
-                    connection.Open();
-                }
-                catch (Exception exc)
-                {
-                    //we display the error message.
-                    MessageBox.Show(exc.Message);
-                }
+                IdUserConnected = int.Parse(file.ReadLine());
             }
+
+                if (connection.State == ConnectionState.Closed && connection != null)
+                {
+                    try
+                    {
+                        //init of the connection    
+                        connection.Open();
+                    }
+                    catch (Exception exc)
+                    {
+                        //we display the error message.
+                        MessageBox.Show(exc.Message);
+                    }
+                }
 
             MySqlCommand cmd = connection.CreateCommand();
 
-            cmd.CommandText = $@"INSERT INTO `cardgame`.`users_cards` (`IdCards`, `IdUsers`, `Game`) VALUES ('2', '1', '1');";
+            cmd.CommandText = $@"USE CardGame; INSERT INTO `cardgame`.`users_cards` (`IdCards`, `IdUsers`, Game) VALUES ((SELECT idCards FROM cards WHERE IdCards={RandomCardNumber}), (SELECT idUsers FROM users WHERE idUsers={IdUserConnected}), 1); ";
 
             DbDataReader reader = cmd.ExecuteReader();
 
@@ -406,6 +418,14 @@ namespace CardGameManagement
 
         public void CheckCardAlreadyPulled(int RandomCardNumber)
         {
+            int IdUserConnected;
+            string WorkingDirectory = Directory.GetCurrentDirectory();
+
+            using (StreamReader file = File.OpenText($@"{WorkingDirectory}\UserConnected.txt"))
+            {
+                IdUserConnected = int.Parse(file.ReadLine());
+            }
+
             if (connection.State == ConnectionState.Closed && connection != null)
             {
                 try
@@ -422,7 +442,7 @@ namespace CardGameManagement
 
             MySqlCommand cmd = connection.CreateCommand();
 
-            cmd.CommandText = $@"USE CardGame; SELECT idCards, idUsers FROM users_cards WHERE idUsers LIKE(1) AND idCards LIKE(2);";
+            cmd.CommandText = $@"USE CardGame; SELECT idCards, idUsers FROM users_cards WHERE idUsers LIKE('{IdUserConnected}') AND idCards LIKE('{RandomCardNumber}');";
 
             DbDataReader reader = cmd.ExecuteReader();
 
@@ -440,6 +460,159 @@ namespace CardGameManagement
             }
 
             connection.Close();
+        }
+
+        public string GetCardHealthPointsPlayer1(int RandomCardNumber)
+        {
+            if (connection.State == ConnectionState.Closed && connection != null)
+            {
+                try
+                {
+                    //init of the connection    
+                    connection.Open();
+                }
+                catch (Exception exc)
+                {
+                    //we display the error message.
+                    MessageBox.Show(exc.Message);
+                }
+            }
+
+            MySqlCommand cmd = connection.CreateCommand();
+
+            // SQL request
+            cmd.CommandText = $"USE CardGame; SELECT HealthPoints FROM Cards WHERE idCards LIKE({RandomCardNumber});";
+
+            DbDataReader reader = cmd.ExecuteReader();
+
+            if (reader.HasRows)
+            {
+                if (reader.Read())
+                {
+                    string HealthPoints = reader.GetString(0);
+                    connection.Close();
+                    return HealthPoints;
+                } 
+            }
+
+            connection.Close();
+
+            return "";
+        }
+
+        public string GetCardHealthPointsPlayer2(int RandomCardNumber)
+        {
+            if (connection.State == ConnectionState.Closed && connection != null)
+            {
+                try
+                {
+                    //init of the connection    
+                    connection.Open();
+                }
+                catch (Exception exc)
+                {
+                    //we display the error message.
+                    MessageBox.Show(exc.Message);
+                }
+            }
+
+            MySqlCommand cmd = connection.CreateCommand();
+
+            // SQL request
+            cmd.CommandText = $"USE CardGame; SELECT HealthPoints FROM Cards WHERE idCards LIKE({RandomCardNumber});";
+
+            DbDataReader reader = cmd.ExecuteReader();
+
+            if (reader.HasRows)
+            {
+                if (reader.Read())
+                {
+                    string AttackValue = reader.GetString(0);
+                    connection.Close();
+                    return AttackValue;
+                }       
+            }
+
+            connection.Close();
+
+            return "";
+        }
+
+        public string GetCardAttackValuePlayer1(int RandomCardNumber)
+        {
+            if (connection.State == ConnectionState.Closed && connection != null)
+            {
+                try
+                {
+                    //init of the connection    
+                    connection.Open();
+                }
+                catch (Exception exc)
+                {
+                    //we display the error message.
+                    MessageBox.Show(exc.Message);
+                }
+            }
+
+            MySqlCommand cmd = connection.CreateCommand();
+
+            // SQL request
+            cmd.CommandText = $"USE CardGame; SELECT AttackValue FROM Cards WHERE idCards LIKE({RandomCardNumber});";
+
+            DbDataReader reader = cmd.ExecuteReader();
+
+            if (reader.HasRows)
+            {
+                if (reader.Read())
+                {
+                    string AttackValue = reader.GetString(0);
+                    connection.Close();
+                    return AttackValue;
+                }           
+            }
+
+            connection.Close();
+
+            return "";
+        }
+
+        public string GetCardAttackValuePlayer2(int RandomCardNumber)
+        {
+            if (connection.State == ConnectionState.Closed && connection != null)
+            {
+                try
+                {
+                    //init of the connection    
+                    connection.Open();
+                }
+                catch (Exception exc)
+                {
+                    //we display the error message.
+                    MessageBox.Show(exc.Message);
+                }
+            }
+
+            MySqlCommand cmd = connection.CreateCommand();
+
+            // SQL request
+            cmd.CommandText = $"USE CardGame; SELECT AttackValue FROM Cards WHERE idCards LIKE({RandomCardNumber});";
+
+            DbDataReader reader = cmd.ExecuteReader();
+
+            if (reader.HasRows)
+            {
+                if (reader.Read())
+                {
+                    string AttackValue = reader.GetString(0);
+                    connection.Close();
+                    return AttackValue;
+                }
+                    
+            }
+
+            connection.Close();
+
+            return "";
         }
     }
 }
