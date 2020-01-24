@@ -614,5 +614,52 @@ namespace CardGameManagement
 
             return "";
         }
+
+        public int CheckIfAllCardsUsed()
+        {
+            int IdUserConnected;
+            string WorkingDirectory = Directory.GetCurrentDirectory();
+
+            using (StreamReader file = File.OpenText($@"{WorkingDirectory}\UserConnected.txt"))
+            {
+                IdUserConnected = int.Parse(file.ReadLine());
+            }
+
+            if (connection.State == ConnectionState.Closed && connection != null)
+            {
+                try
+                {
+                    //init of the connection    
+                    connection.Open();
+                }
+                catch (Exception exc)
+                {
+                    //we display the error message.
+                    MessageBox.Show(exc.Message);
+                }
+            }
+
+            MySqlCommand cmd = connection.CreateCommand();
+
+            // SQL request
+            cmd.CommandText = $"SELECT COUNT(idCards) FROM users_cards WHERE idUsers LIKE {IdUserConnected};";
+
+            DbDataReader reader = cmd.ExecuteReader();
+
+            if (reader.HasRows)
+            {
+                if (reader.Read())
+                {
+                    int NumberCardUsed = reader.GetInt32(0);
+                    connection.Close();
+                    return NumberCardUsed;
+                }
+
+            }
+
+            connection.Close();
+
+            return 0;
+        }
     }
 }

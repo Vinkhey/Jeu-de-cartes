@@ -93,6 +93,7 @@
             this.button1.TabIndex = 7;
             this.button1.Text = "Quitter la partie";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button3
             // 
@@ -143,6 +144,7 @@
             this.button7.TabIndex = 8;
             this.button7.Text = "Quitter la partie";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // BtnNewCardPlayer2
             // 

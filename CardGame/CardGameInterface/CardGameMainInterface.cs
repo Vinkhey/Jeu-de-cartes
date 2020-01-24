@@ -144,6 +144,8 @@ namespace CardGameInterface
 
         private void button4_Click(object sender, EventArgs e)
         {
+            DbConnector DBconnection = new DbConnector();
+
             if (label1.Text != "" || label2.Text != "")
             {
                 int HealpointsP2Int = int.Parse(label1.Text) - int.Parse(label3.Text);
@@ -154,13 +156,27 @@ namespace CardGameInterface
                     label2.Text = "0";
                     button5.Image = null;
                 }
+                else
+                {
+                    label1.Text = HealpointsP2Int.ToString();
+                }
 
-                label1.Text = HealpointsP2Int.ToString();
+                int test = DBconnection.CheckIfAllCardsUsed();
+
+                if(test == 17)
+                {
+                    MessageBox.Show("You win !");
+                    Menu MainMenu = new Menu();
+                    this.Hide();
+                    MainMenu.ShowDialog();
+                }
             }
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
+            DbConnector DBconnection = new DbConnector();
+
             if (label3.Text != "" || label4.Text != "")
             {
                 int HealpointsP1Int = int.Parse(label4.Text) - int.Parse(label2.Text);
@@ -175,7 +191,32 @@ namespace CardGameInterface
                 {
                     label4.Text = HealpointsP1Int.ToString();
                 }
+
+                int test = DBconnection.CheckIfAllCardsUsed();
+
+                if (test == 16)
+                {
+                    MessageBox.Show("You Win !");
+                    Menu MainMenu = new Menu();
+                    this.Hide();
+                    MainMenu.ShowDialog();
+                    
+                }
             }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Menu MainMenu = new Menu();
+            this.Hide();
+            MainMenu.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Menu MainMenu = new Menu();
+            this.Hide();
+            MainMenu.ShowDialog();
         }
     }
 }
